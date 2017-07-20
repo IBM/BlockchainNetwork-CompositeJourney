@@ -14,11 +14,11 @@ This project is focused on helping developer to setup a sample Hyperledger Fabri
 * [nvm](https://github.com/creationix/nvm/blob/master/README.markdown) - if you want to use the nvm install command to retrieve a node version
 
 ## Steps
-1. [Download Platform-specific Binaries](#-1-download-platform-specific-binaries)
-2. [Setting up the Network using script](#-2-setting-up-the-network-using-script)
-3. [Setting up the Network manually](#-3-setting-up-the-network-manually)
-4. [Troubleshooting](#-4-troubleshooting)
-5. [Additional Resources](#-5-additional-resources)
+1. [Download Platform-specific Binaries](#1-download-platform-specific-binaries)
+2. [Setting up the Network using script](#2-setting-up-the-network-using-script)
+3. [Setting up the Network manually](#3-setting-up-the-network-manually)
+4. [Troubleshooting](#4-troubleshooting)
+5. [Additional Resources](#5-additional-resources)
 
 ## 1. Download Platform-specific Binaries
 
@@ -255,7 +255,7 @@ working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
 # command: /bin/bash -c './scripts/script.sh ${CHANNEL_NAME}; sleep $TIMEOUT'
 volumes
 ```
-If left uncommented, script.sh will exercise all of the CLI commands when the network is started, as described in [Behind the scenes - script.sh](#3c5-behind-the-scenes---script.sh) section. However, we want to go through the commands manually in order to expose the syntax and functionality of each call.
+If left uncommented, script.sh will exercise all of the CLI commands when the network is started, as described in [Behind the scenes - script.sh](#3c5-behind-the-scenes---scriptsh) section. However, we want to go through the commands manually in order to expose the syntax and functionality of each call.
 
 Pass in a moderately high value for the `TIMEOUT` variable (specified in seconds); otherwise the CLI container, by default, will exit after 60 seconds.
 
