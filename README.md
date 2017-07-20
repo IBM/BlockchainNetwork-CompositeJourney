@@ -10,7 +10,6 @@ This project is focused on helping developer to setup a sample Hyperledger Fabri
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
 * [Node.js & npm](https://nodejs.org/en/download/) - node v6.2.0 - v6.10.0 (v7+ not supported); npm comes with your node installation.
-* [xcode](https://developer.apple.com/xcode/) - only required for OS X users
 * [nvm](https://github.com/creationix/nvm/blob/master/README.markdown) - if you want to use the nvm install command to retrieve a node version
 
 ## Steps
@@ -438,6 +437,9 @@ Select `y`.
 
 ## 5. Additional Resources
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
+
+## Reference
+* This example is based on [Network Setup Sample](https://github.com/hyperledger/fabric-samples/tree/release/first-network). 
 
 ## License
 [Apache 2.0](LICENSE)
