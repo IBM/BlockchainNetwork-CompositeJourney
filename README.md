@@ -94,7 +94,7 @@ Looking for package.json of Business Network Definition
 	Input directory: /Users/ishan/Documents/git-demo/BlockchainNetwork-CompositeJourney
 
 Found:
-	Description: Sample product auction network
+	Description: Sample Trade Network
 	Name: my-network
 	Identifier: my-network@0.0.1
 
@@ -107,7 +107,7 @@ Command succeeded
 The `composer archive create` command has created a file called `my-network.bna` in the `dist` folder.
 
 You can test the business network definition against the embedded runtime that stores the state of 'the blockchain' in-memory in a Node.js process. This embedded runtime is very useful for unit testing, as it allows you to focus on testing the business logic rather than configuring an entire Fabric.
-From your project working directory (product-auction), open the file test/productAuction.js and run the following command:
+From your project working directory, open the file test/sample.js and run the following command:
 ```
 npm test
 ```
@@ -164,7 +164,7 @@ You can verify the new owner by clicking on the `Commodity` registry. Also you c
 
   ## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
 
-Change directory to the `dist` folder containing `product-auction.bna` file and type:
+Change directory to the `dist` folder containing `my-network.bna` file and type:
 ```
 cd dist
 composer network deploy -a my-network.bna -p hlfv1 -i PeerAdmin -s <randomString>
@@ -175,7 +175,7 @@ After sometime time business network should be deployed to the local Hyperledger
 Deploying business network from archive: my-network.bna
 Business network definition:
 	Identifier: my-network@0.0.1
-	Description: Sample product auction network
+	Description: Sample Trade Network
 
 ✔ Deploying business network definition. This may take a minute...
 
@@ -185,7 +185,7 @@ Command succeeded
 
 You can verify that the network has been deployed by typing:
 ```
-composer network ping -n product-auction -p hlfv1 -i admin -s adminpw
+composer network ping -n my-network -p hlfv1 -i admin -s adminpw
 ```
 
 You should see the the output as follows:
@@ -199,7 +199,7 @@ Command succeeded
 
 To integrate with the deployed business network (creating assets/participants and submitting transactions) we can either use the Composer Node SDK or we can generate a REST API.
 To create the REST API we need to launch the `composer-rest-server` and tell it how to connect to our deployed business network.
-Now launch the server by changing directory to the product-auction folder and type:
+Now launch the server by changing directory to the project working directory and type:
 ```bash
 cd ..
 composer-rest-server
