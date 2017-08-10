@@ -1,0 +1,22 @@
+{
+  "name": "my-network",
+  "version": "0.0.1",
+  "description": "Sample product auction network",
+  "scripts": {
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/my-network.bna",
+    "test": "mocha --recursive"
+  },
+  "author": "Hyperledger",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "latest",
+    "composer-client": "latest",
+    "composer-connector-embedded": "latest",
+    "browserfs": "latest",
+    "chai": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

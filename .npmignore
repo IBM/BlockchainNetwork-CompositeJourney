@@ -1,14 +1,3 @@
-# Emacs backup files
-*~
-*#
-.#*
-# Vim file artifacts
-.*.sw*
-# installed platform-specific binaries
-.DS_Store
-
-.project
-
 # Logs
 logs
 *.log
@@ -56,6 +45,4 @@ out
 *.swp
 
 # Build generated files should be ignored by git, but not by npm.
-dist
-
-node_modules
+# dist
