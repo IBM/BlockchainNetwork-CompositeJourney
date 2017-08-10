@@ -15,10 +15,10 @@ This project is focused on helping developer to run Hyperledger Fabric locally, 
 
 ## Steps
 1. [Installing Hyperledger Composer Development Tools](#1-installing-hyperledger-composer-development-tools)
-2. [Setting up the Network using script](#2-setting-up-the-network-using-script)
-3. [Setting up the Network manually](#3-setting-up-the-network-manually)
-4. [Troubleshooting](#4-troubleshooting)
-5. [Additional Resources](#5-additional-resources)
+2. [Starting Hyperledger Fabric](#2-starting-hyperledger-fabric)
+3. [Generate the Business Network Archive (BNA)](#3-generate-the-business-network-archive-bna)
+4. [Deploy the Business Network Archive using Composer Playground](#4-deploy-the-business-network-archive-using-composer-playground)
+5. [Deploy the Business Network Archive on Hyperledger Composer running locally](#5-deploy-the-business-network-archive-on-hyperledger-composer-running-locally)
 
 ## 1. Installing Hyperledger Composer Development Tools
 
@@ -162,7 +162,7 @@ Submit a `Trade` transaction to change the owner of Commodity `commodityA`:
 
 You can verify the new owner by clicking on the `Commodity` registry. Also you can view all the transactions by selecting the `All Transactions` registry.
 
-## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
+  ## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
 
 Change directory to the `dist` folder containing `product-auction.bna` file and type:
 ```
