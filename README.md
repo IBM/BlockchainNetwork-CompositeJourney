@@ -1,8 +1,8 @@
 # BlockchainNetwork-CompositeJourney
 
-## Build Your First Hyperledger Network
+## Build Your First Network (BYFN)
 
-This project is focused on helping developer to run Hyperledger Fabric locally, then install and deploy Composer Business Network Archive(i.e. **.bna**) file on it.
+This project is focused on helping the developer to run Hyperledger Fabric locally. In this journey, we will create a sample Business Network Archive (BNA) file for Commodity trade and deploy it on Hyperledger Fabric. In the next journey, we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions.
 
 ## Prerequisite and setup
 
@@ -162,7 +162,7 @@ Submit a `Trade` transaction to change the owner of Commodity `commodityA`:
 
 You can verify the new owner by clicking on the `Commodity` registry. Also you can view all the transactions by selecting the `All Transactions` registry.
 
-  ## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
+## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
 
 Change directory to the `dist` folder containing `my-network.bna` file and type:
 ```
