@@ -2,7 +2,10 @@
 
 ## Build Your First Network (BYFN)
 
-This project is focused on helping the developer to run Hyperledger Fabric locally. In this journey, we will create a sample Business Network Archive (BNA) file for Commodity trade and deploy it on Hyperledger Fabric. In the next journey, we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions.
+This project is focused on helping the developer to run Hyperledger Fabric locally. In this journey, we will create a sample Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on Hyperledger Fabric. In the next journey, we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions.
+
+You can use Hyperledger Composer to quickly model your current business network, containing your existing assets and the transactions related to them; assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks. Business network definition consists of model(.cto), script(.js) and ACL(.acl) files packaged and exported as an archive(.bna file). The archive file is then deployed to Hyperledger Fabric network.
+
 
 ## Prerequisite and setup
 
@@ -44,14 +47,6 @@ npm install -g yo
 
 ## 2. Starting Hyperledger Fabric
 
-There are two version of Hyperledger Fabric: v0.6 and v1.0. Hyperledger Fabric v1.0 is highly recommended and the default. If for some reason v0.6 needs to be installed, you can set it explicitly as follows:
-```bash
-export FABRIC_VERSION=hlfv0.6
-```
-To unset a v.06 export or to explicitly use v1 Fabric, use the following command:
-```bash
-export FABRIC_VERSION=hlfv1
-```
 First download the docker files for Fabric. Then start the Fabric and create a Composer profile using the following commands:
 ```bash
 ./downloadFabric.sh
