@@ -2,12 +2,26 @@
 
 ## Build Your First Network (BYFN)
 
-This project is focused on helping the developer to run Hyperledger Fabric locally. In this journey, we will create a sample Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on Hyperledger Fabric. In the next journey, we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions.
+Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples.
 
-You can use Hyperledger Composer to quickly model your current business network, containing your existing assets and the transactions related to them; assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks. Business network definition consists of model(.cto), script(.js) and ACL(.acl) files packaged and exported as an archive(.bna file). The archive file is then deployed to Hyperledger Fabric network.
+Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
 
+[Part 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney), we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions. In this journey, you will run Hyperledger Fabric locally.
 
-## Prerequisite and setup
+You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to quickly model your current business network, containing your existing assets and the transactions related to them. Assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks. A business network definition consists of model(.cto), script(.js) and ACL(.acl) files packaged and exported as an archive(.bna file). The archive file is then deployed to a Hyperledger Fabric network.
+
+## Included Components
+* Hyperledger Fabric
+* Hyperledger Composer
+* Docker
+
+## Application Workflow Diagram
+![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
+
+1. Install the Network Dependicies a) cryptogen b) configtxgen c) configtxlator d) peer
+2. Configure the network a) generating the network artifacts b) Starting up the network
+
+## Prerequisites
 
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
@@ -25,12 +39,14 @@ You can use Hyperledger Composer to quickly model your current business network,
 
 ## 1. Installing Hyperledger Composer Development Tools
 
+**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
+
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
 ```
 npm install -g composer-cli
 ```
 
-* The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke applications for your business network. To install `generator-hyperledger-composer` run the following command:
+* The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
 npm install -g generator-hyperledger-composer
 ```
@@ -40,21 +56,23 @@ npm install -g generator-hyperledger-composer
 npm install -g composer-rest-server
 ```
 
-* `Yeoman` is a tool for generating applications. When combined with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
+* When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
 ```
 npm install -g yo
 ```
 
 ## 2. Starting Hyperledger Fabric
 
-First download the docker files for Fabric. Then start the Fabric and create a Composer profile using the following commands:
+First download the docker files for Fabric in preparation for creating a Composer profile.  Hyperledger Composer uses Connection Profiles to connect to a runtime. A Connection Profile is a JSON document that lives in the user's home directory (or may come from an environment variable) and is referenced by name when using the Composer APIs or the Command Line tools. Using connection profiles ensures that code and scripts are easily portable from one runtime instance to another.
+
+Start the Fabric and create a Composer profile using the following commands:
 ```bash
 ./downloadFabric.sh
 ./startFabric.sh
 ./createComposerProfile.sh
 ```  
 
-You can stop and tear down Fabric using:
+No need to do it now; however as an fyi - you can stop and tear down Fabric using:
 ```
 ./stopFabric.sh
 ./teardownFabric.sh
@@ -75,7 +93,7 @@ This business network defines:
 
 `Commodity` is owned by a `Trader`, and the owner of a `Commodity` can be modified by submitting a `Trade` transaction.
 
-You can now generate a Business Network Archive (BNA) file for your business network definition. The BNA file is the deployable unit -- a file that can be deployed to the Composer runtime for execution.
+The next step is to generate a Business Network Archive (BNA) file for your business network definition. The BNA file is the deployable unit -- a file that can be deployed to the Composer runtime for execution.
 
 Use the following command to generate the network archive:
 ```bash
@@ -102,19 +120,49 @@ Command succeeded
 The `composer archive create` command has created a file called `my-network.bna` in the `dist` folder.
 
 You can test the business network definition against the embedded runtime that stores the state of 'the blockchain' in-memory in a Node.js process. This embedded runtime is very useful for unit testing, as it allows you to focus on testing the business logic rather than configuring an entire Fabric.
-From your project working directory, open the file test/sample.js and run the following command:
+From your project working directory(`BlockchainNetwork-CompositeJourney`), run the command:
 ```
 npm test
+```
+
+You should see the following output:
+```bash
+
+> my-network@0.0.1 test /Users/laurabennett/2017-NewRole/Code/BlockchainNetwork-CompositeJourney
+> mocha --recursive
+
+Commodity Trading
+    #tradeCommodity
+      ✓ should be able to trade a commodity (198ms)
+
+
+  1 passing (1s)
 ```
 
 ## 4. Deploy the Business Network Archive using Composer Playground
 
 Open [Composer Playground](http://composer-playground.mybluemix.net/), by default the Basic Sample Network is imported.
-If you have previously used Playground, be sure to clear your browser local storage by running `localStorage.clear()` in your browser Console. Now import the `my-network.bna` file and click on deploy button.
+If you have previously used Playground, be sure to clear your browser local storage by running `localStorage.clear()` in your browser Console.
+
+Now import the `my-network.bna` file and click on deploy button.
+<p align="center">
+  <img width="100" height="50" src="images/importbtn.png">
+</p>
 
 >You can also setup [Composer Playground locally](https://hyperledger.github.io/composer/installing/using-playground-locally.html).
 
-To test this Business Network Definition in the **Test** tab:
+You will see the following:
+<p align="center">
+  <img width="400" height="200" src="images/ComposerPlayground.jpg">
+</p>
+
+To test your Business Network Definition, first click on the **Test** tab:
+
+Click on the `Create New Participant` button
+<p align="center">
+  <img width="200" height="100" src="images/createparticipantbtn.png">
+</p>
+
 
 Create `Trader` participants:
 
@@ -134,7 +182,8 @@ Create `Trader` participants:
 }
 ```
 
-Create a `Commodity` asset with owner as `traderA`:
+Highlight the Commodity tab on the far left hand side and
+create a `Commodity` asset with owner as `traderA`:
 ```
 {
   "$class": "org.acme.mynetwork.Commodity",
@@ -146,7 +195,7 @@ Create a `Commodity` asset with owner as `traderA`:
 }
 ```
 
-Submit a `Trade` transaction to change the owner of Commodity `commodityA`:
+Click on the `Submit Transaction` button on the lower left-hand side and submit a `Trade` transaction to change the owner of Commodity `commodityA`:
 ```
 {
   "$class": "org.acme.mynetwork.Trade",
@@ -157,7 +206,12 @@ Submit a `Trade` transaction to change the owner of Commodity `commodityA`:
 
 You can verify the new owner by clicking on the `Commodity` registry. Also you can view all the transactions by selecting the `All Transactions` registry.
 
-## 5. Deploy the Business Network Archive on Hyperledger Composer running locally
+Example of transaction view:
+<p align="center">
+  <img width="400" height="200" src="images/transactionsview.png">
+</p>
+
+## 5. Deploy the Business Network Archive on Hyperledger Composer running locally (alternative deployment approach)
 
 Change directory to the `dist` folder containing `my-network.bna` file and type:
 ```
@@ -225,6 +279,9 @@ Browse your REST API at http://localhost:3000/explorer
 Open a web browser and navigate to http://localhost:3000/explorer
 
 You should see the LoopBack API Explorer, allowing you to inspect and test the generated REST API. Follow the instructions to test Business Network Definition as mentioned above in the composer section.
+
+## Ready to move to Step 2!
+Congrauations - you have completed Step 1 of this Composite Journey - move onto [Step 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney).
 
 ## Additional Resources
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
