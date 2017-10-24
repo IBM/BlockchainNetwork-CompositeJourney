@@ -6,7 +6,7 @@
 
 Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 主办的一个 Hyperledger 项目。Hyperledger Fabric 旨在作为开发具有模块化架构的应用程序或解决方案的基础，它允许即插即用地使用共识服务和成员服务等组件。
 
-[第 2 部分](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)，我们将进一步探索创建包含多个参与者的复杂网络，并使用访问控制规则 (ACL) 为参与者提供网络访问权限。在此次学习之旅中，将在本地运行 Hyperledger Fabric。
+[第 2 部分](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)，我们将进一步探索创建包含多个参与者的复杂网络，并使用访问控制规则 (ACL) 为参与者提供网络访问权限。在本 developer journey 中，将在本地运行 Hyperledger Fabric。
 
 可以使用 [Hyperledger Composer](https://github.com/hyperledger/composer) 为当前的业务网络快速建模，包括现有资产和与之相关的交易。资产包括有形或无形的商品、服务或财产。作为业务网络模型的一部分，您还要定义能与资产交互的交易。业务网络还包含跨多个业务网络与它们交互的参与者，每个参与者都可以与唯一身份关联。业务网络定义由模型 (.cto)、脚本 (.js) 和 ACL (.acl) 文件组成，它们都打包为归档文件（.bna 文件）并导出。然后，将该归档文件部署到 Hyperledger Fabric 网络中。
 
