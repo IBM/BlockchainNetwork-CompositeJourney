@@ -19,6 +19,7 @@ Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 
 ![应用程序工作流](images/GettingStartedWComposer-arch-diagram.png)
 
 1.安装网络依赖项 a) cryptogen b) configtxgen c) configtxlator d) peer
+
 2.配置网络 a) 生成网络工件 b) 启动网络
 
 ## 前提条件
