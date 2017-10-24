@@ -33,9 +33,13 @@ Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 
 
 ## 步骤
 1.[安装 Hyperledger Composer 开发工具](#1-installing-hyperledger-composer-development-tools)
+
 2.[启动 Hyperledger Fabric](#2-starting-hyperledger-fabric)
+
 3.[生成 Business Network Archive (BNA)](#3-generate-the-business-network-archive-bna)
+
 4.[使用 Composer Playground 部署 Business Network Archive](#4-deploy-the-business-network-archive-using-composer-playground)
+
 5.[将 Business Network Archive 部署到在本地运行的 Hyperledger Composer 上](#5-deploy-the-business-network-archive-on-hyperledger-composer-running-locally)
 
 ## 1.安装 Hyperledger Composer 开发工具
