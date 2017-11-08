@@ -216,7 +216,7 @@ Example of transaction view:
 Change directory to the `dist` folder containing `my-network.bna` file and type:
 ```
 cd dist
-composer network deploy -a my-network.bna -p hlfv1 -i PeerAdmin -s <randomString>
+composer network deploy -a my-network.bna -p hlfv1 -i PeerAdmin -s randomString -A admin -S
 ```
 
 After sometime time business network should be deployed to the local Hyperledger Fabric. You should see the output as follows:
@@ -240,10 +240,10 @@ composer network ping -n my-network -p hlfv1 -i admin -s adminpw
 You should see the the output as follows:
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.10.0
-	participant: <no participant found>
+	version: 0.14.3
+	participant: org.hyperledger.composer.system.NetworkAdmin#admin
 
-Command succeeded  
+Command succeeded
 ```
 
 To integrate with the deployed business network (creating assets/participants and submitting transactions) we can either use the Composer Node SDK or we can generate a REST API.

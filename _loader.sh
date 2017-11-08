@@ -1,4 +1,4 @@
-echo "Development only script for Hyplerledger Fabric control"
+echo "Development only script for Hyperledger Fabric control"
 
 
 # Grab the current directory
