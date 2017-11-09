@@ -1,4 +1,5 @@
-﻿# BlockchainNetwork-CompositeJourney
+﻿*阅读本文的其他语言版本：[English](README.md)。*
+ # BlockchainNetwork-CompositeJourney
 
 ## 构建您的第一个网络 (BYFN)
 
