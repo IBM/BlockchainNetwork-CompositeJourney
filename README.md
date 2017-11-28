@@ -49,12 +49,12 @@ npm install -g composer-cli@0.16.0
 
 * The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
-npm install -g generator-hyperledger-composeri@0.16.0
+npm install -g generator-hyperledger-composer@0.16.0
 ```
 
 * The `composer-rest-server` uses the Hyperledger Composer LoopBack Connector to connect to a business network, extract the models and then present a page containing the REST APIs that have been generated for the model. To install `composer-rest-server` run the following command:
 ```
-npm install -g composer-rest-serveri@0.16.0
+npm install -g composer-rest-server@0.16.0
 ```
 
 * When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
