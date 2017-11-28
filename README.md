@@ -44,22 +44,22 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
 ```
-npm install -g composer-cli
+npm install -g composer-cli@0.16.0
 ```
 
 * The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
-npm install -g generator-hyperledger-composer
+npm install -g generator-hyperledger-composeri@0.16.0
 ```
 
 * The `composer-rest-server` uses the Hyperledger Composer LoopBack Connector to connect to a business network, extract the models and then present a page containing the REST APIs that have been generated for the model. To install `composer-rest-server` run the following command:
 ```
-npm install -g composer-rest-server
+npm install -g composer-rest-serveri@0.16.0
 ```
 
 * When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
 ```
-npm install -g yo
+npm install -g yo@2.0.0
 ```
 
 ## 2. Starting Hyperledger Fabric
@@ -214,62 +214,52 @@ Example of transaction view:
 
 ## 5. Deploy the Business Network Archive on Hyperledger Composer running locally (alternative deployment approach)
 
-Change directory to the `dist` folder containing `my-network.bna` file and type:
+Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.
+
+Change directory to the `dist` folder containing `my-network.bna` file.
+
+The `composer runtime install` command requires a PeerAdmin business network card (in this case one has been created and imported in advance), and the name of the business network. To install the composer runtime, run the following command:
 ```
 cd dist
-composer network deploy -a my-network.bna -p hlfv1 -i PeerAdmin -s randomString -A admin -S
+composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
 ```
 
-After sometime time business network should be deployed to the local Hyperledger Fabric. You should see the output as follows:
+The `composer network start` command requires a business network card, as well as the name of the admin identity for the business network, the file path of the `.bna` and the name of the file to be created ready to import as a business network card. To deploy the business network, run the following command:
 ```
-Deploying business network from archive: my-network.bna
-Business network definition:
-	Identifier: my-network@0.0.1
-	Description: Sample Trade Network
+composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
+```
 
-✔ Deploying business network definition. This may take a minute...
-
-
-Command succeeded
+The `composer card import` command requires the filename specified in `composer network start` to create a card. To import the network administrator identity as a usable business network card, run the following command:
+```
+composer card import --file networkadmin.card
 ```
 
 You can verify that the network has been deployed by typing:
 ```
-composer network ping -n my-network -p hlfv1 -i admin -s adminpw
+composer network ping --card admin@my-network
 ```
 
 You should see the the output as follows:
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.14.3
+	version: 0.16.0
 	participant: org.hyperledger.composer.system.NetworkAdmin#admin
 
 Command succeeded
 ```
 
-To integrate with the deployed business network (creating assets/participants and submitting transactions) we can either use the Composer Node SDK or we can generate a REST API.
-To create the REST API we need to launch the `composer-rest-server` and tell it how to connect to our deployed business network.
-Now launch the server by changing directory to the project working directory and type:
+To integrate with the deployed business network (creating assets/participants and submitting transactions) we can either use the Composer Node SDK or we can generate a REST API. To create the REST API we need to launch the `composer-rest-server` and tell it how to connect to our deployed business network. Now launch the server by changing directory to the project working directory and type:
 ```bash
 cd ..
 composer-rest-server
 ```
 
 Answer the questions posed at startup. These allow the composer-rest-server to connect to Hyperledger Fabric and configure how the REST API is generated.
-```
-_   _                                 _              _                                  ____                                                         
-| | | |  _   _   _ __     ___   _ __  | |   ___    __| |   __ _    ___   _ __           / ___|   ___    _ __ ___    _ __     ___    ___    ___   _ __
-| |_| | | | | | | '_ \   / _ \ | '__| | |  / _ \  / _` |  / _` |  / _ \ | '__|  _____  | |      / _ \  | '_ ` _ \  | '_ \   / _ \  / __|  / _ \ | '__|
-|  _  | | |_| | | |_) | |  __/ | |    | | |  __/ | (_| | | (_| | |  __/ | |    |_____| | |___  | (_) | | | | | | | | |_) | | (_) | \__ \ |  __/ | |   
-|_| |_|  \__, | | .__/   \___| |_|    |_|  \___|  \__,_|  \__, |  \___| |_|             \____|  \___/  |_| |_| |_| | .__/   \___/  |___/  \___| |_|   
-         |___/  |_|                                       |___/                                                    |_|                                
-? Enter your Fabric Connection Profile Name: hlfv1
-? Enter your Business Network Identifier : my-network
-? Enter your Fabric username : admin
-? Enter your secret: adminpw
-? Specify if you want namespaces in the generated REST API: never use namespaces
-? Specify if you want the generated REST API to be secured: No
-```
+* Enter `admin@my-network` as the card name.
+* Select `never use namespaces` when asked whether to use namespaces in the generated API.
+* Select `No` when asked whether to secure the generated API.
+* Select `Yes` when asked whether to enable event publication.
+* Select `No` when asked whether to enable TLS security.
 
 If the composer-rest-server started successfully you should see these two lines are output:
 ```
