@@ -70,7 +70,7 @@ Start the Fabric and create a Composer profile using the following commands:
 ```bash
 ./downloadFabric.sh
 ./startFabric.sh
-./createComposerProfile.sh
+./createPeerAdminCard.sh
 ```  
 
 No need to do it now; however as an fyi - you can stop and tear down Fabric using:
