@@ -174,7 +174,8 @@ Create `Trader` participants:
   "firstName": "Tobias",
   "lastName": "Funke"
 }
-
+```
+```
 {
   "$class": "org.acme.mynetwork.Trader",
   "tradeId": "traderB",
