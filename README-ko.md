@@ -1,11 +1,14 @@
-*Read this in other languages: [中国](README-cn.md).*
+*Read this in other languages: [English](README.md), [中国](README-cn.md).*
 # BlockchainNetwork-CompositeJourney
 
 ## Build Your First Network (BYFN)
 
 Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples.
+블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **Part 1**에서는 상품 거래를 위한 하이퍼레저 컴포저 (Hyperledger Composer) BNA (Business Network Archive) 파일을 생성하여 하이퍼레저 패브릭 (Hyperledger Fabric)에 배포하는 방법을 보여줍니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
 
-Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
+Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn 
+하이퍼레저 Hyperledger Fabric은 블록체인 프레임 워크 구현이며 Linux Foundation에서 호스팅하는 Hyperledger 프로젝트 중 하나입니다. 모듈러 아키텍처로 응용 프로그램 또는 솔루션을 개발하기위한 토대가되는 Hyperledger Fabric은 합의 및 멤버십 서비스와 같은 구성 요소를 플러그 앤 플레이 방식으로 사용할 수 있습니다.
+
 
 [Part 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney), we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions. In this journey, you will run Hyperledger Fabric locally.
 
