@@ -20,7 +20,7 @@
 ![애플리케이션 워크플로우](images/GettingStartedWComposer-arch-diagram.png)
 
 1. 네트워크 구성파일 설치하기 a) cryptogen b) configtxgen c) configtxlator d) peer
-2. 네트워크 설정하기 a) generating the network artifacts b) 네트워크 시작하기
+2. 네트워크 설정하기 a) 네트워크 아티팩트 생성하기 b) 네트워크 시작하기
 
 ## 사전 준비
 
@@ -73,7 +73,7 @@ npm install -g yo@2.0.0
 ./createPeerAdminCard.sh
 ```  
 
-No need to do it now; however as an fyi - you can stop and tear down Fabric using:
+지금 해볼 것은 아니지만 참고로 알아두십시오 - 아래 명령어를 사용하면 패브릭을 중단하거나 없앨 수 있습니다:
 ```
 ./stopFabric.sh
 ./teardownFabric.sh
@@ -81,26 +81,26 @@ No need to do it now; however as an fyi - you can stop and tear down Fabric usin
 
 ## 3. Business Network Archive (BNA) 생성하기
 
-This business network defines:
+이 비즈니스 네트워크는 다음을 정의합니다:
 
-**Participant**
+**참가자**
 `Trader`
 
-**Asset**
+**자산**
 `Commodity`
 
-**Transaction**
+**트랜잭션**
 `Trade`
 
-`Commodity` is owned by a `Trader`, and the owner of a `Commodity` can be modified by submitting a `Trade` transaction.
+`Commodity`는 `Trader`가 소유하고, `Commodity`의 소유주는 `Trade` 트랜젝션을 제출하여 수정할 수 있습니다.
 
-The next step is to generate a Business Network Archive (BNA) file for your business network definition. The BNA file is the deployable unit -- a file that can be deployed to the Composer runtime for execution.
+다음 단계는 비즈니스 네트워크 정의를 위한 BNA (Business Network Archive) 파일을 생성하는 것입니다. BNA 파일은 배포 가능한 유닛으로, 실행을 위해 컴포저 런타임에 배포할 수 있는 파일입니다.
 
-Use the following command to generate the network archive:
+네트워크 아카이브를 생성하려면 다음의 명령을 사용합니다:
 ```bash
 npm install
 ```
-You should see the following output:
+다음의 결과를 확인할 수 있습니다:
 ```bash
 Creating Business Network Archive
 
@@ -118,15 +118,16 @@ Written Business Network Definition Archive file to
 Command succeeded
 ```
 
-The `composer archive create` command has created a file called `my-network.bna` in the `dist` folder.
+`composer archive create` 명령은 `dist` 폴더에 `my-network.bna`라는 파일을 생성합니다.
 
-You can test the business network definition against the embedded runtime that stores the state of 'the blockchain' in-memory in a Node.js process. This embedded runtime is very useful for unit testing, as it allows you to focus on testing the business logic rather than configuring an entire Fabric.
-From your project working directory(`BlockchainNetwork-CompositeJourney`), run the command:
+Node.js 프로세스에서 '블록체인' 인메모리 상태를 저장하는 임베디드 런타임에 대해 비즈니스 네트워크 정의를 테스트할 수 있습니다. 이 임베디드 런타임은 전체 패브릭을 구성하는 대신 비즈니스 로직 테스트에 집중할 수 있으므로 단위 테스트에 매우 유용합니다. 
+
+프로젝트 작업 디렉토리 (`BlockchainNetwork-CompositeJourney`)에서 다음 명령을 실행하십시오:
 ```
 npm test
 ```
 
-You should see the following output:
+다음 결과를 확인할 수 있습니다:
 ```bash
 
 > my-network@0.0.1 test /Users/laurabennett/2017-NewRole/Code/BlockchainNetwork-CompositeJourney
@@ -142,30 +143,29 @@ Commodity Trading
 
 ## 4. Composer Playground를 사용하여 Business Network Archive 배포하기
 
-Open [Composer Playground](http://composer-playground.mybluemix.net/), by default the Basic Sample Network is imported.
-If you have previously used Playground, be sure to clear your browser local storage by running `localStorage.clear()` in your browser Console.
+[컴포저 플레이그라운드](http://composer-playground.mybluemix.net/)를 열면,자동으로 기본 샘플 네트워크를 가져옵니다. 이전에 플레이그라운드를 사용한 적이 있는 경우, 브라우저 콘솔에서 `localStorage.clear()`를 실행하여 브라우저 로컬 저장소를 지우십시오.
 
-Now import the `my-network.bna` file and click on deploy button.
+이제 배포 버튼을 클릭하여 `my-network.bna`파일을 가져오가 합니다.
 <p align="center">
   <img width="100" height="50" src="images/importbtn.png">
 </p>
 
->You can also setup [Composer Playground locally](https://hyperledger.github.io/composer/installing/using-playground-locally.html).
+>[컴포저 플레이그라운드를 로컬에서](https://hyperledger.github.io/composer/installing/using-playground-locally.html) 설정할 수도 있습니다.
 
-You will see the following:
+다음이 표시됩니다:
 <p align="center">
   <img width="400" height="200" src="images/ComposerPlayground.jpg">
 </p>
 
-To test your Business Network Definition, first click on the **Test** tab:
+비즈니스 네트워크 정의를 테스트하려면, **Test** 탭을 클릭합니다:
 
-Click on the `Create New Participant` button
+`Create New Participant` 버튼을 클릭합니다
 <p align="center">
   <img width="200" height="100" src="images/createparticipantbtn.png">
 </p>
 
 
-Create `Trader` participants:
+`Trader` 참여자를 생성합니다:
 
 ```
 {
@@ -184,8 +184,8 @@ Create `Trader` participants:
 }
 ```
 
-Highlight the Commodity tab on the far left hand side and
-create a `Commodity` asset with owner as `traderA`:
+가장 왼쪽에 있는 Commodity 탭을 하이라이트하고
+`traderA`를 소유주로 하여 `Commodity` 자산을 생성합니다:
 ```
 {
   "$class": "org.acme.mynetwork.Commodity",
@@ -197,7 +197,7 @@ create a `Commodity` asset with owner as `traderA`:
 }
 ```
 
-Click on the `Submit Transaction` button on the lower left-hand side and submit a `Trade` transaction to change the owner of Commodity `commodityA`:
+왼쪽 하단에 있는 `Submit Transaction` 버튼을 클릭하고 `Trade` 트랜젝션을 제출하여 Commodity의 소유주를 `commodityA`로 변경합니다:
 ```
 {
   "$class": "org.acme.mynetwork.Trade",
@@ -206,16 +206,16 @@ Click on the `Submit Transaction` button on the lower left-hand side and submit 
 }
 ```
 
-You can verify the new owner by clicking on the `Commodity` registry. Also you can view all the transactions by selecting the `All Transactions` registry.
+`Commodity` 레지스트리를 클릭하여 새 소유주를 확인할 수 있습니다. 또한 `All Transactions` 레지스트리를 선택하여 모든 트랜젝션을 볼 수 있습니다.
 
-Example of transaction view:
+트랜젝션 뷰의 예:
 <p align="center">
   <img width="400" height="200" src="images/transactionsview.png">
 </p>
 
 ## 5. 로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기 (대체 설치 방안)
 
-Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저 체인코드를 피어에 설치해야하며, 비즈니스 네트워크 아카이브 (.bna)를 피어로 보내야하며, 네트워크 관리자가 되려면 새 참가자, ID 및 관련 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 가져오기(import)해야합니다. 그 이후에 네트워크가 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
+하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저 체인코드를 피어에 설치해야하며, 비즈니스 네트워크 아카이브 (.bna)를 피어로 보내야하며, 네트워크 관리자가 되려면 새 참가자, ID 및 관련 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 가져오기(import)해야합니다. 그 이후에 네트워크가 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
 
 디렉토리를 `my-network.bna` 파일이 들어있는 `dist` 폴더로 변경합니다.
 
