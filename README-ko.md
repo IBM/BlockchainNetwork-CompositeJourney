@@ -64,9 +64,9 @@ npm install -g yo@2.0.0
 
 ## 2. 하이퍼레저 패브릭 
 
-First download the docker files for Fabric in preparation for creating a Composer profile.  Hyperledger Composer uses Connection Profiles to connect to a runtime. A Connection Profile is a JSON document that lives in the user's home directory (or may come from an environment variable) and is referenced by name when using the Composer APIs or the Command Line tools. Using connection profiles ensures that code and scripts are easily portable from one runtime instance to another.
+먼저 컴포저 프로파일을 작성하기 위해 패브릭용 도커 파일을 다운로드합니다. 하이퍼레저 컴포저는 연결 프로파일(Connection Profiles)을 사용하여 런타임에 연결합니다. 연결 프로파일은 사용자의 홈 디렉토리에 있는 JSON 문서이며(또는 환경 변수에서 올 수 있는) Composer API 또는 명령행 도구를 사용할 때 이름으로 참조됩니다. 연결 프로파일을 사용하면 코드와 스크립트를 하나의 런타임 인스턴스에서 다른 런타임 인스턴스로 쉽게 이동할 수 있습니다.
 
-Start the Fabric and create a Composer profile using the following commands:
+패브릭을 시작하고 다음 명령을 사용하여 컴포저 프로파일을 만듭니다.:
 ```bash
 ./downloadFabric.sh
 ./startFabric.sh
@@ -215,32 +215,32 @@ Example of transaction view:
 
 ## 5. 로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기 (대체 설치 방안)
 
-Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.
+Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저 체인코드를 피어에 설치해야하며, 비즈니스 네트워크 아카이브 (.bna)를 피어로 보내야하며, 네트워크 관리자가 되려면 새 참가자, ID 및 관련 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 가져오기(import)해야합니다. 그 이후에 네트워크가 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
 
-Change directory to the `dist` folder containing `my-network.bna` file.
+디렉토리를 `my-network.bna` 파일이 들어있는 `dist` 폴더로 변경합니다.
 
-The `composer runtime install` command requires a PeerAdmin business network card (in this case one has been created and imported in advance), and the name of the business network. To install the composer runtime, run the following command:
+`composer runtime install` 명령을 사용하려면 PeerAdmin 비즈니스 네트워크 카드 (이 경우 하나는 미리 만들어져 가져오기 되었습니다)와 비즈니스 네트워크의 이름이 필요합니다. 컴포저 런타임을 설치하려면 다음 명령을 실행하십시오:
 ```
 cd dist
 composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
 ```
 
-The `composer network start` command requires a business network card, as well as the name of the admin identity for the business network, the file path of the `.bna` and the name of the file to be created ready to import as a business network card. To deploy the business network, run the following command:
+`composer network start` 명령에는 비즈니스 네트워크 카드, 비즈니스 네트워크의 관리자 ID 이름, `.bna` 파일 경로 및 비즈니스 네트워크 카드로 가져올 파일명이 필요합니다. 비즈니스 네트워크를 배포하려면 다음 명령을 실행하십시오:
 ```
 composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
 ```
 
-The `composer card import` command requires the filename specified in `composer network start` to create a card. To import the network administrator identity as a usable business network card, run the following command:
+`composer card import` 명령을 사용하려면 `composer network start`에 지정된 파일 이름이 있어야 카드를 만들 수 있습니다. 사용 가능한 비즈니스 네트워크 카드로 네트워크 관리자 ID를 가져 오려면 다음 명령을 실행합니다:
 ```
 composer card import --file networkadmin.card
 ```
 
-You can verify that the network has been deployed by typing:
+아래와 같이 입력하면 네트워크를 확인할 수 있습니다:
 ```
 composer network ping --card admin@my-network
 ```
 
-You should see the the output as follows:
+다음이 나타납니다:
 ```
 The connection to the network was successfully tested: my-network
 	version: 0.16.0
@@ -249,33 +249,33 @@ The connection to the network was successfully tested: my-network
 Command succeeded
 ```
 
-To integrate with the deployed business network (creating assets/participants and submitting transactions) we can either use the Composer Node SDK or we can generate a REST API. To create the REST API we need to launch the `composer-rest-server` and tell it how to connect to our deployed business network. Now launch the server by changing directory to the project working directory and type:
+배포된 비즈니스 네트워크 (자산/참여자 생성 및 트랜잭션 제출)와 통합하기 위해 컴포저 노드 SDK를 사용하거나 REST API를 생성할 수 있습니다. REST API를 만들려면 composer-rest-server를 시작하고 배포된 비즈니스 네트워크에 연결하는 방법을 알려줘야합니다. 이제 디렉토리를 프로젝트 작업 디렉토리와 타입으로 변경하고 다음을 입력하여 서버를 시작합니다:
 ```bash
 cd ..
 composer-rest-server
 ```
 
-Answer the questions posed at startup. These allow the composer-rest-server to connect to Hyperledger Fabric and configure how the REST API is generated.
+시작할 때 나타난 질문들에 답하십시오.  그러면 composer-rest-server를 하이퍼레저 패브릭에 연결하고 REST API의 생성 방법을 설정할 수 있습니다.
 * Enter `admin@my-network` as the card name.
 * Select `never use namespaces` when asked whether to use namespaces in the generated API.
 * Select `No` when asked whether to secure the generated API.
 * Select `Yes` when asked whether to enable event publication.
 * Select `No` when asked whether to enable TLS security.
 
-If the composer-rest-server started successfully you should see these two lines are output:
+만약 composer-rest-server 가 성공적으로 시작되었다면 다음의 두 줄을 확인할 수 있습니다:
 ```
 Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
 
-Open a web browser and navigate to http://localhost:3000/explorer
+웹브라우저를 열어 http://localhost:3000/explorer 로 이동합니다. 
 
-You should see the LoopBack API Explorer, allowing you to inspect and test the generated REST API. Follow the instructions to test Business Network Definition as mentioned above in the composer section.
+생성된 REST API를 검사하고 테스트할 수 있도록 LoopBack API 탐색기가 표시되어야 합니다. 위의 컴포저 섹션에서 나와있는대로 설명을 따라 비즈니스 네트워크 정의를 테스트하십시오.
 
 ## Ready to move to Step 2!
-Congratulations - you have completed Step 1 of this Composite Journey - move onto [Step 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney).
+축하합니다 - 이 시리즈의 1 단계를 완성하였습니다 - 이제 [2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)로 이동합니다.
 
-## Additional Resources
+## 추가 리소승
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
 * [Hyperledger Composer Docs](https://hyperledger.github.io/composer/introduction/introduction.html)
 
