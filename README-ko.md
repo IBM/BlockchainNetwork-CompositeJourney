@@ -3,13 +3,13 @@
 
 ## Build Your First Network (BYFN)
 
-블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **Part 1**에서는 상품 거래를 위한 하이퍼레저 컴포저 (Hyperledger Composer) BNA (Business Network Archive) 파일을 생성하여 하이퍼레저 패브릭 (Hyperledger Fabric)에 배포하는 방법을 보여줍니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
+블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **Part 1**에서는 상품 거래를 위한 하이퍼레저 컴포저(Hyperledger Composer) BNA (Business Network Archive) 파일을 생성하여 하이퍼레저 패브릭(Hyperledger Fabric)에 배포하는 방법을 다룹니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
 
 하이퍼레저 패브릭은 블록체인 런타임의 구현 프로젝트며, 리눅스 재단에서 호스팅하는 하이퍼레저 프로젝트 중 하나입니다. 모듈러 아키텍처로 애플리케이션이나 솔루션을 개발하기 위한 토대가 되는 하이퍼레저 패브릭은 합의 및 멤버십 서비스와 같은 구성 요소를 플러그 앤 플레이 방식으로 사용할 수 있습니다.
 
 [Part 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)에서는 여러 참가자가 참여하는 복잡한 네트워크를 만들고 액세스 제어 리스트 (ACL)를 사용하여 네트워크 액세스 권한을 제공하는 방법에 대해 자세히 살펴봅니다. 이 과정에서는 하이퍼레저 패브릭을 로컬에서 실행합니다.
 
-[하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 자산은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산과 상호 작용할 수있는 트랜잭션을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크는 아카이브 (.bna 파일)로 패키지되고 export되는 모델 (.cto), 스크립트 (.js) 및 ACL (.acl) 파일로 구성됩니다. 그런 다음 아카이브 파일이 하이퍼레저 패브릭 네트워크에 배포됩니다.
+[하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 자산은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산과 상호 작용할 수있는 트랜잭션을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크 정의는 모델(.cto), 스크립트(.js) 및 ACL(.acl) 파일로 구성되어 아카이브(.bna 파일) 형태로 패키지화 되고 가져오기됩니다. 그런 다음 아카이브 파일이 하이퍼레저 패브릭 네트워크에 배포됩니다.
 
 ## 구성 요소
 * 하이퍼레저 패브릭
@@ -34,9 +34,9 @@
 ## Steps
 1. [하이퍼레저 컴포저 개발 툴 설치하기](#1-하이퍼레저-컴포저-개발-툴-설치하기)
 2. [하이퍼레저 패브릭 시작하기](#2-하이퍼레저-패브릭-시작하기)
-3. [Business Network Archive (BNA) 생성하기](#3-business-network-archive-bna-)
-4. [Composer Playground를 사용하여 Business Network Archive 배포하기](#4-composer-playground를-사용하여-business-network-archive-배포하기)
-5. [로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기](#5-로컬에-있는-하이퍼레저-컴포저에-business-network-archive-배포하기)
+3. [Business Network Archive (BNA) 생성하기](#3-business-network-archive-bna-생성하기)
+4. [컴포저 플레이그라운드를 사용하여 Business Network Archive 배포하기](#4-컴포저-플레이그라운드를-사용하여-business-network-archive-배포하기)
+5. [로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기](#5-로컬에-있는-하이퍼레저-컴포저에-business-network-archive-배포하기-대체-설치-방안)
 
 ## 1. 하이퍼레저 컴포저 개발 툴 설치하기
 
@@ -62,11 +62,11 @@ npm install -g composer-rest-server@0.16.0
 npm install -g yo@2.0.0
 ```
 
-## 2. 하이퍼레저 패브릭 
+## 2. 하이퍼레저 패브릭 시작하기
 
 먼저 컴포저 프로파일을 작성하기 위해 패브릭용 도커 파일을 다운로드합니다. 하이퍼레저 컴포저는 연결 프로파일(Connection Profiles)을 사용하여 런타임에 연결합니다. 연결 프로파일은 사용자의 홈 디렉토리에 있는 JSON 문서이며(또는 환경 변수에서 올 수 있는) Composer API 또는 명령행 도구를 사용할 때 이름으로 참조됩니다. 연결 프로파일을 사용하면 코드와 스크립트를 하나의 런타임 인스턴스에서 다른 런타임 인스턴스로 쉽게 이동할 수 있습니다.
 
-패브릭을 시작하고 다음 명령을 사용하여 컴포저 프로파일을 만듭니다.:
+패브릭을 시작하고 다음 명령을 사용하여 컴포저 프로파일을 만듭니다:
 ```bash
 ./downloadFabric.sh
 ./startFabric.sh
@@ -141,7 +141,7 @@ Commodity Trading
   1 passing (1s)
 ```
 
-## 4. Composer Playground를 사용하여 Business Network Archive 배포하기
+## 4. 컴포저 플레이그라운드를 사용하여 Business Network Archive 배포하기
 
 [컴포저 플레이그라운드](http://composer-playground.mybluemix.net/)를 열면,자동으로 기본 샘플 네트워크를 가져옵니다. 이전에 플레이그라운드를 사용한 적이 있는 경우, 브라우저 콘솔에서 `localStorage.clear()`를 실행하여 브라우저 로컬 저장소를 지우십시오.
 
@@ -272,10 +272,10 @@ Browse your REST API at http://localhost:3000/explorer
 
 생성된 REST API를 검사하고 테스트할 수 있도록 LoopBack API 탐색기가 표시되어야 합니다. 위의 컴포저 섹션에서 나와있는대로 설명을 따라 비즈니스 네트워크 정의를 테스트하십시오.
 
-## Ready to move to Step 2!
+## 2 단계를 진행하실 준비가 되었습니다! 
 축하합니다 - 이 시리즈의 1 단계를 완성하였습니다 - 이제 [2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)로 이동합니다.
 
-## 추가 리소승
+## 추가 리소스
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
 * [Hyperledger Composer Docs](https://hyperledger.github.io/composer/introduction/introduction.html)
 
