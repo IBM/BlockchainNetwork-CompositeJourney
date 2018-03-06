@@ -17,7 +17,7 @@
 * 도커 (Docker)
 
 ## 애플리케이션 워크플로우 다이아그램
-![애플리케이션 워크플로우](images/GettingStartedWComposer-arch-diagram.png)
+![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
 
 1. 네트워크 구성파일 설치하기 a) cryptogen b) configtxgen c) configtxlator d) peer
 2. 네트워크 설정하기 a) 네트워크 아티팩트 생성하기 b) 네트워크 시작하기
