@@ -3,13 +3,13 @@
 
 ## Build Your First Network (BYFN)
 
-블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **Part 1**에서는 상품 거래를 위한 비즈니스 프로세스를 하이퍼레저 컴포저(Hyperledger Composer)를 사용하여 BNA (Business Network Archive) 파일을 생성, 생성된 파일을 하이퍼레저 패브릭(Hyperledger Fabric)에 배포하는 방법을 다룹니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
+블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **1 단계**에서는 상품 거래를 위한 비즈니스 프로세스를 하이퍼레저 컴포저(Hyperledger Composer)를 사용하여 BNA (Business Network Archive) 파일을 생성, 생성된 파일을 하이퍼레저 패브릭(Hyperledger Fabric)에 배포하는 방법을 다룹니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
 
 하이퍼레저 패브릭은 리눅스 재단 (Linux Foundation®)에서 하이퍼레저 프로젝트 기반에 인큐베이션 프로젝트 중 하나인 표준 블록체인 플랫폼 구현 프로젝트입니다.하이퍼레저 패브릭은 모듈러 아키텍처로 애플리케이션이나 솔루션을 개발하기 위한 토대가 되며, 블록체인 구성 요소인 합의 및 멤버십 서비스 기능 등을 플러그 앤 플레이 방식으로 사용할 수 있습니다.
 
-[Part 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)에서는 여러 참가자가 참여하는 복잡한 네트워크를 만들고 액세스 제어 리스트 (ACL)를 사용하여 네트워크 액세스 권한을 제공하는 방법에 대해 자세히 살펴봅니다. 이 과정에서는 하이퍼레저 패브릭을 로컬에서 실행합니다.
+[2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)에서는 여러 참가자가 참여하는 복잡한 네트워크를 만들고 액세스 제어 리스트 (ACL)를 사용하여 네트워크 액세스 권한을 제공하는 방법에 대해 자세히 살펴봅니다. 이 과정에서는 하이퍼레저 패브릭을 로컬에서 실행합니다.
 
-[하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 여기서 자산(Asset)은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산(Asset)을 기반으로 서비스 기능별로 트랜잭션(Transaction)을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 하나의 비즈니스 네트워크나 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크 정의하는 구성요소는 모델(.cto), 스크립트(.js) 및 ACL(.acl) 파일로 구성되어 아카이브(.bna 파일) 형태로 패키지화 되어 생성되게 됩니다. 그런 다음 아카이브 파일(BNA)을 하이퍼레저 패브릭 네트워크에 배포됩니다.
+[하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 여기서 자산(Asset)은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산을 기반으로 서비스 기능별로 트랜젝션(Transaction)을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 하나의 비즈니스 네트워크나 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크 정의하는 구성요소는 모델(.cto), 스크립트(.js) 및 ACL(.acl) 파일로 구성되어 아카이브(.bna 파일) 형태로 패키지화 되어 생성되게 됩니다. 그런 다음 아카이브 파일(BNA)을 하이퍼레저 패브릭 네트워크에 배포됩니다.
 
 ## 구성 요소
 * 하이퍼레저 패브릭
@@ -47,17 +47,17 @@
 npm install -g composer-cli@0.16.0
 ```
 
-* `generator-hyperledger-composer`는 Yeoman 플러그인으로 비즈니스 네트워크용 애플리케이션을 구성 및 생성하게 됩니다. Yeoman은 오픈 소스 클라이언트 측 개발 스택으로, 웹 어플리케이션을 제작하기 전에 필요한 디렉토리 구조 및 기본적인 파일을 생성해 주는 프레임워크입니다. `generator-hyperledger-composer`를 설치하려면 아래 명령어를 실행하십시오: 
+* `generator-hyperledger-composer`는 Yeoman 플러그인으로 비즈니스 네트워크용 애플리케이션을 구성 및 생성하게 됩니다. Yeoman은 오픈 소스 클라이언트 측 개발 스택으로, 웹 애플리케이션을 제작하기 전에 필요한 디렉토리 구조 및 기본적인 파일을 생성해 주는 프레임워크입니다. `generator-hyperledger-composer`를 설치하려면 다음을 실행하십시오: 
 ```
 npm install -g generator-hyperledger-composer@0.16.0
 ```
 
-* `composer-rest-server`는 하이퍼레저 컴포저 루프백 커넥터를 사용하여 비즈니스 네트워크에 연결하고 모델을 추출한 다음, 모델용으로 생성된 REST API가 포함된 페이지를 보여줍니다.(* 루프백(Loopback) : 높은 확장성을 지닌 Open-source Node.js framework 이며, 간단한 코딩만으로 동적으로 end-to-end REST API를 생성해주는 기능을 제공합니다.) composer-rest-server`를 설치하려면 아래 명령어를 실행하십시오:
+* `composer-rest-server`는 하이퍼레저 컴포저 루프백 커넥터를 사용하여 비즈니스 네트워크에 연결하고 모델을 추출한 다음, 모델용으로 생성된 REST API가 포함된 페이지를 보여줍니다.(* 루프백(Loopback) : 높은 확장성을 지닌 Open-source Node.js framework 이며, 간단한 코딩만으로 동적으로 end-to-end REST API를 생성해주는 기능을 제공합니다.)`composer-rest-server`를 설치하려면 다음을 실행합니다:
 ```
 npm install -g composer-rest-server@0.16.0
 ```
 
-* `Yeoman`을  `generator-hyperledger-composer` 구성 요소와 결합하게 되면, 비즈니스 네트워크를 해석하고 이를 기반으로 애플리케이션을 쉽게 생성할 수 있습니다. `Yeoman`을 설치하려면 아래 명령어를 실행하십시오:
+* `Yeoman`을  `generator-hyperledger-composer` 구성 요소와 결합하게 되면, 비즈니스 네트워크를 해석하고 이를 기반으로 애플리케이션을 쉽게 생성할 수 있습니다. `Yeoman`을 설치하려면 다음을 실행합니다:
 ```
 npm install -g yo@2.0.0
 ```
@@ -215,7 +215,7 @@ Commodity Trading
 
 ## 5. 로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기 (대체 설치 방안)
 
-하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저를 통해 생성한 비즈니스 네트워크 아카이브 (.bna)를 피어로 디플로이 해야하며, 비즈니스 네트워크 관리자가 되려면 새 참가자, ID 및 이와 연관된 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 생성한 카드정보를 가져오기import 기능을 통해 가져와야 합니다. 그 이후에 네트워크가 정상적으로 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
+하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저를 통해 생성한 비즈니스 네트워크 아카이브 (.bna)를 피어로 디플로이 해야하며, 비즈니스 네트워크 관리자가 되려면 새 참가자, ID 및 이와 연관된 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 생성한 카드정보를 가져오기(import) 기능을 통해 가져와야 합니다. 그 이후에 네트워크가 정상적으로 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
 
 디렉토리를 `my-network.bna` 파일이 들어있는 `dist` 폴더로 변경합니다.
 
@@ -230,7 +230,7 @@ composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
 composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
 ```
 
-`composer card import` 명령을 사용하려면 `composer network start`에 지정된 파일 이름이 있어야 카드를 만들 수 있습니다. 사용 가능한 비즈니스 네트워크 카드로 네트워크 관리자 ID를 가져 오려면 다음 명령을 실행합니다:
+`composer card import` 명령을 사용하려면 `composer network start`에 지정된 파일 이름이 있어야 카드를 만들 수 있습니다. 사용 가능한 비즈니스 네트워크 카드로 네트워크 관리자 ID를 가져 오려면 다음을 실행합니다:
 ```
 composer card import --file networkadmin.card
 ```
@@ -240,7 +240,7 @@ composer card import --file networkadmin.card
 composer network ping --card admin@my-network
 ```
 
-다음이 나타납니다:
+아래와 같은 결과가 나타납니다:
 ```
 The connection to the network was successfully tested: my-network
 	version: 0.16.0
@@ -249,7 +249,7 @@ The connection to the network was successfully tested: my-network
 Command succeeded
 ```
 
-배포된 비즈니스 네트워크 (자산/참여자 생성 및 트랜잭션 제출)와 통합하기 위해 컴포저 노드 SDK를 사용하거나 REST API를 생성할 수 있습니다. REST API를 만들려면 composer-rest-server를 시작하고 배포된 비즈니스 네트워크에 연결하는 방법을 알려줘야합니다. 이제 디렉토리를 프로젝트 작업 디렉토리와 타입으로 변경하고 다음을 입력하여 서버를 시작합니다:
+배포된 비즈니스 네트워크 (자산/참여자 생성 및 트랜잭션 제출)와 통합하기 위해 컴포저 노드 SDK를 사용하거나 REST API를 생성할 수 있습니다. REST API를 만들려면 composer-rest-server를 시작하고 배포된 비즈니스 네트워크의 접속 정보를 설정합니다. 이제 디렉토리를 프로젝트 작업 디렉토리와 타입으로 변경하고 다음을 입력하여 서버를 시작합니다:
 ```bash
 cd ..
 composer-rest-server
