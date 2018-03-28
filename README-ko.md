@@ -12,11 +12,11 @@
 [하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 여기서 자산(Asset)은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산을 기반으로 서비스 기능별로 트랜젝션(Transaction)을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 하나의 비즈니스 네트워크나 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크 정의하는 구성요소는 모델(.cto), 스크립트(.js) 및 ACL(.acl) 파일로 구성되어 아카이브(.bna 파일) 형태로 패키지화 되어 생성되게 됩니다. 그런 다음 아카이브 파일(BNA)을 하이퍼레저 패브릭 네트워크에 배포됩니다.
 
 ## 구성 요소
-* 하이퍼레저 패브릭
-* 하이퍼레저 컴포저
+* 하이퍼레저 패브릭 (Hyperledger Fabric)
+* 하이퍼레저 컴포저 (Hyperledger Composer)
 * 도커 (Docker)
 
-## 애플리케이션 워크플로우 다이아그램
+## 애플리케이션 워크플로우 도표
 ![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
 
 1. 네트워크 구성파일 설치하기 a) cryptogen b) configtxgen c) configtxlator d) peer
@@ -25,7 +25,7 @@
 ## 사전 준비
 
 * [Docker](https://www.docker.com/products/overview) - v1.13 또는 그 이상
-* [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 또는 그 이상
+* [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 또는 그 이상 
 * [Node.js & npm](https://nodejs.org/en/download/) - node v6.2.0 - v6.10.0 (v7+ 미지원); npm은 노드 설치와 동시에 제공됩니다.
 * [Git client](https://git-scm.com/downloads) - clone 명령 관련하여 필요합니다
 *  git - 2.9.x
@@ -197,7 +197,7 @@ Commodity Trading
 }
 ```
 
-왼쪽 하단에 있는 `Submit Transaction` 버튼을 클릭하고 `Trade` 트랜젝션을 제출하여 Commodity의 소유주를 `commodityA`로 변경합니다:
+왼쪽 하단에 있는 `Submit Transaction` 버튼을 클릭하고 `Trade` 트랜션을 제출하여 Commodity의 소유주를 `commodityA`로 변경합니다:
 ```
 {
   "$class": "org.acme.mynetwork.Trade",
@@ -206,16 +206,16 @@ Commodity Trading
 }
 ```
 
-`Commodity` 레지스트리를 클릭하여 새 소유주를 확인할 수 있습니다. 또한 `All Transactions` 레지스트리를 선택하여 모든 트랜젝션을 볼 수 있습니다.
+`Commodity` 레지스트리를 클릭하여 새 소유주를 확인할 수 있습니다. 또한 `All Transactions` 레지스트리를 선택하여 모든 트랜잭션을 볼 수 있습니다.
 
-트랜젝션 뷰의 예:
+트랜잭션 뷰의 예:
 <p align="center">
   <img width="400" height="200" src="images/transactionsview.png">
 </p>
 
 ## 5. 로컬에 있는 하이퍼레저 컴포저에 Business Network Archive 배포하기 (대체 설치 방안)
 
-하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저를 통해 생성한 비즈니스 네트워크 아카이브 (.bna)를 피어로 디플로이 해야하며, 비즈니스 네트워크 관리자가 되려면 새 참가자, ID 및 이와 연관된 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 생성한 카드정보를 가져오기(import) 기능을 통해 가져와야 합니다. 그 이후에 네트워크가 정상적으로 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
+하이퍼레저 패브릭에 비즈니스 네트워크를 배포하려면 하이퍼레저 컴포저를 통해 생성한 비즈니스 네트워크 아카이브 (.bna)를 피어로 배포해야 하며, 비즈니스 네트워크 관리자가 되려면 새 참가자, ID 및 이와 연관된 카드를 만들어야 합니다. 마지막으로, 네트워크 관리자 비즈니스 네트워크 카드를 사용하려면 생성한 카드 정보를 가져오기(import) 기능을 통해 가져와야 합니다. 그 이후에 네트워크가 정상적으로 응답하는지 확인하기 위해 핑(ping) 할 수 있습니다.
 
 디렉토리를 `my-network.bna` 파일이 들어있는 `dist` 폴더로 변경합니다.
 
@@ -256,11 +256,12 @@ composer-rest-server
 ```
 
 시작할 때 나타난 질문들에 답하십시오.  그러면 composer-rest-server를 하이퍼레저 패브릭에 연결하고 REST API의 생성 방법을 설정할 수 있습니다.
-* Enter `admin@my-network` as the card name.
-* Select `never use namespaces` when asked whether to use namespaces in the generated API.
-* Select `No` when asked whether to secure the generated API.
-* Select `Yes` when asked whether to enable event publication.
-* Select `No` when asked whether to enable TLS security.
+
+* 카드 이름으로 `admin@my-network`를 입력하십시오.
+* 생성된 API에서 네임스페이스 사용 여부를 묻는다면 `never use namespaces`를 선택합니다.
+* 생성된 API의 보안 여부를 묻는다면 `No`를 선택합니다.
+* 이벤트 게시를 활성화할지 묻는다면 `Yes`를 선택합니다.
+* TLS 보안의 사용 여부를 뭍는다면 `No`를 선택합니다.
 
 만약 composer-rest-server 가 성공적으로 시작되었다면 다음의 두 줄을 확인할 수 있습니다:
 ```
@@ -273,7 +274,7 @@ Browse your REST API at http://localhost:3000/explorer
 생성된 REST API를 검사하고 테스트할 수 있도록 LoopBack API Explorer가 웹브라우저에서 표시되어야 합니다. 위의 컴포저 섹션에서 나와있는대로 설명을 따라 비즈니스 네트워크 정의를 테스트하십시오.
 
 ## 2 단계를 진행하실 준비가 되었습니다! 
-축하합니다 - 이 시리즈의 1 단계를 완성하였습니다 - 이제 [2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)로 이동합니다.
+축하합니다! 이 시리즈의 1 단계를 완료하셨습니다 - 이제 [2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)로 이동합니다.
 
 ## 추가 리소스
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
