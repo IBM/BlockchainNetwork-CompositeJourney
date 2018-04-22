@@ -7,9 +7,10 @@ THIS_SCRIPT=`basename "$0"`
 echo "Running '${THIS_SCRIPT}'"
 
 
+#Move to version HPL V1.1.0
 if [ -z ${FABRIC_VERSION+x} ]; then
- echo "FABRIC_VERSION is unset, assuming hlfv1"
- export FABRIC_VERSION="hlfv1"
+ echo "FABRIC_VERSION is unset, assuming hlfv11"
+ export FABRIC_VERSION="hlfv11"
 else
  echo "FABRIC_VERSION is set to '$FABRIC_VERSION'"
 fi
@@ -29,3 +30,4 @@ else
 fi
 
 "${DIR}"/fabric-scripts/"${FABRIC_VERSION}"/"${THIS_SCRIPT}"
+

@@ -3,7 +3,7 @@
 
 ## Build Your First Network (BYFN)
 
-Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples.
+Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples so beginner developers should be able to manage this.
 
 Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
 
@@ -17,7 +17,7 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 * Docker
 
 ## Application Workflow Diagram
-![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
+![Application Workflow](images/arch-blockchain-network1.png)
 
 1. Install the Network Dependicies a) cryptogen b) configtxgen c) configtxlator d) peer
 2. Configure the network a) generating the network artifacts b) Starting up the network
@@ -40,21 +40,25 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 
 ## 1. Installing Hyperledger Composer Development Tools
 
-**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
+**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.1).  If you have an older version installed, go ahead and remove it by using the command:
+
+```
+npm uninstall -g composer-cli
+```
 
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
 ```
-npm install -g composer-cli@0.16.0
+npm install -g composer-cli@0.19.1
 ```
 
 * The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
-npm install -g generator-hyperledger-composer@0.16.0
+npm install -g generator-hyperledger-composer@0.19.1
 ```
 
 * The `composer-rest-server` uses the Hyperledger Composer LoopBack Connector to connect to a business network, extract the models and then present a page containing the REST APIs that have been generated for the model. To install `composer-rest-server` run the following command:
 ```
-npm install -g composer-rest-server@0.16.0
+npm install -g composer-rest-server@0.19.1
 ```
 
 * When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
@@ -65,6 +69,13 @@ npm install -g yo@2.0.0
 ## 2. Starting Hyperledger Fabric
 
 First download the docker files for Fabric in preparation for creating a Composer profile.  Hyperledger Composer uses Connection Profiles to connect to a runtime. A Connection Profile is a JSON document that lives in the user's home directory (or may come from an environment variable) and is referenced by name when using the Composer APIs or the Command Line tools. Using connection profiles ensures that code and scripts are easily portable from one runtime instance to another.
+
+The PeerAdmin card is a special ID card used to administer the local Hyperledger Fabric. In a development installation, such as the one on your computer, the PeerAdmin ID card is created when you install the local Hyperledger Fabric.
+
+The form for a PeerAdmin card for a Hyperledger Fabric v1.0 network is PeerAdmin@hlfv1.  In general, the PeerAdmin is a special role reserved for functions such as:
+
+* Deploying business networks
+* Creating, issuing, and revoking ID cards for business network admins*
 
 Start the Fabric and create a Composer profile using the following commands:
 ```bash
@@ -145,10 +156,8 @@ Commodity Trading
 Open [Composer Playground](http://composer-playground.mybluemix.net/), by default the Basic Sample Network is imported.
 If you have previously used Playground, be sure to clear your browser local storage by running `localStorage.clear()` in your browser Console.
 
-Now import the `my-network.bna` file and click on deploy button.
-<p align="center">
-  <img width="100" height="50" src="images/importbtn.png">
-</p>
+Now import the `my-network.bna` file and click on deploy button.  If you don't know how to import, take a [tour of Composer Playground](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)
+
 
 >You can also setup [Composer Playground locally](https://hyperledger.github.io/composer/installing/using-playground-locally.html).
 
@@ -219,15 +228,15 @@ Deploying a business network to the Hyperledger Fabric requires the Hyperledger 
 
 Change directory to the `dist` folder containing `my-network.bna` file.
 
-The `composer runtime install` command requires a PeerAdmin business network card (in this case one has been created and imported in advance), and the name of the business network. To install the composer runtime, run the following command:
+The `composer network install` command requires a PeerAdmin business network card (in this case one has been created and imported in advance), and the name of the business network. To install the composer runtime, run the following command:
 ```
 cd dist
-composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
+composer network install --card PeerAdmin@hlfv1 --archiveFile my-network.bna
 ```
 
 The `composer network start` command requires a business network card, as well as the name of the admin identity for the business network, the file path of the `.bna` and the name of the file to be created ready to import as a business network card. To deploy the business network, run the following command:
 ```
-composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
+composer network start --networkName my-network --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 ```
 
 The `composer card import` command requires the filename specified in `composer network start` to create a card. To import the network administrator identity as a usable business network card, run the following command:
@@ -243,8 +252,8 @@ composer network ping --card admin@my-network
 You should see the the output as follows:
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.16.0
-	participant: org.hyperledger.composer.system.NetworkAdmin#admin
+	version: 0.19.0
+	participant: org.hyperledger.composer.system.Identity#82c679fbcb1541eafeff1bc71edad4f2c980a0e17a5333a6a611124c2addf4ba
 
 Command succeeded
 ```
@@ -264,6 +273,12 @@ Answer the questions posed at startup. These allow the composer-rest-server to c
 
 If the composer-rest-server started successfully you should see these two lines are output:
 ```
+Discovering types from business network definition ...
+Discovered types from business network definition
+Generating schemas for all types in business network definition ...
+Generated schemas for all types in business network definition
+Adding schemas for all types to Loopback ...
+Added schemas for all types to Loopback
 Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
