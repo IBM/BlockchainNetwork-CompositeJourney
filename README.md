@@ -3,7 +3,7 @@
 
 ## Build Your First Network (BYFN)
 
-Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples so beginner developers should be able to manage this.
+Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples so beginner developers should be able to manage this. This pattern has been updated to support Hyperledger Composer V0.19.0, Hyperledger Fabric V1.1.
 
 Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
 
@@ -292,7 +292,6 @@ Congratulations - you have completed Step 1 of this Composite Journey - move ont
 
 ## Additional Resources
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
-* [Hyperledger Composer Docs](https://hyperledger.github.io/composer/introduction/introduction.html)
 
 ## License
 [Apache 2.0](LICENSE)
