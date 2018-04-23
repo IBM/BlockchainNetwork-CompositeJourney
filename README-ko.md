@@ -3,7 +3,7 @@
 
 ## Build Your First Network (BYFN)
 
-블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **1 단계**에서는 상품 거래를 위한 비즈니스 프로세스를 하이퍼레저 컴포저(Hyperledger Composer)를 사용하여 BNA (Business Network Archive) 파일을 생성, 생성된 파일을 하이퍼레저 패브릭(Hyperledger Fabric)에 배포하는 방법을 다룹니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"입니다.
+블록체인 애플리케이션을 빌드하는 시리즈 중 첫 번째 과정에 오신 것을 환영합니다. **1 단계**에서는 상품 거래를 위한 비즈니스 프로세스를 하이퍼레저 컴포저(Hyperledger Composer)를 사용하여 BNA (Business Network Archive) 파일을 생성, 생성된 파일을 하이퍼레저 패브릭(Hyperledger Fabric)에 배포하는 방법을 다룹니다. 이 과정은 하이퍼레저 컴포저 샘플버전의 "Hello World"이기 때문에 초급 개발자분들도 이 과정을 따라하실 수 있습니다. 
 
 하이퍼레저 패브릭은 리눅스 재단 (Linux Foundation®)에서 하이퍼레저 프로젝트 기반에 인큐베이션 프로젝트 중 하나인 표준 블록체인 플랫폼 구현 프로젝트입니다.하이퍼레저 패브릭은 모듈러 아키텍처로 애플리케이션이나 솔루션을 개발하기 위한 토대가 되며, 블록체인 구성 요소인 합의 및 멤버십 서비스 기능 등을 플러그 앤 플레이 방식으로 사용할 수 있습니다.
 
@@ -17,7 +17,7 @@
 * 도커 (Docker)
 
 ## 애플리케이션 워크플로우 도표
-![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
+![Application Workflow](images/arch-network1.pn잭)
 
 1. 네트워크 구성파일 설치하기 a) cryptogen b) configtxgen c) configtxlator d) peer
 2. 네트워크 설정하기 a) 네트워크 아티팩트 생성하기 b) 네트워크 시작하기
@@ -40,21 +40,24 @@
 
 ## 1. 하이퍼레저 컴포저 개발 툴 설치하기
 
-**주의:** 수퍼유저 `sudo`모드에서 이 명령을 실행해야 할 수 있습니다. `sudo`를 사용하면 허용된 사용자가 보안 정책에 지정된대로 수퍼유저 또는 다른 사용자로 명령을 실행할 수 있습니다.
+**주의:** 수퍼유저 `sudo`모드에서 이 명령을 실행해야 할 수 있습니다. `sudo`를 사용하면 허용된 사용자가 보안 정책에 지정된대로 수퍼유저 또는 다른 사용자로 명령을 실행할 수 있습니다. 이번 과정에서는 가장 최신 버전의 composer-cli (0.19.1)을 사용합니다. 만약 이전 버전이 설치되어 있다면, 아래 명령을 사용하여 제거합니다:
+```
+npm uninstall -g composer-cli
+```
 
 * `composer-cli` 에는 비즈니스 네트워크 개발에 대한 모든 명령어를 가지고 있습니다. `composer-cli` 를 설치하려면 아래 명령어를 실행하십시오:
 ```
-npm install -g composer-cli@0.16.0
+npm install -g composer-cli@0.19.1
 ```
 
 * `generator-hyperledger-composer`는 Yeoman 플러그인으로 비즈니스 네트워크용 애플리케이션을 구성 및 생성하게 됩니다. Yeoman은 오픈 소스 클라이언트 측 개발 스택으로, 웹 애플리케이션을 제작하기 전에 필요한 디렉토리 구조 및 기본적인 파일을 생성해 주는 프레임워크입니다. `generator-hyperledger-composer`를 설치하려면 다음을 실행하십시오: 
 ```
-npm install -g generator-hyperledger-composer@0.16.0
+npm install -g generator-hyperledger-composer@0.19.1
 ```
 
 * `composer-rest-server`는 하이퍼레저 컴포저 루프백 커넥터를 사용하여 비즈니스 네트워크에 연결하고 모델을 추출한 다음, 모델용으로 생성된 REST API가 포함된 페이지를 보여줍니다.(* 루프백(Loopback) : 높은 확장성을 지닌 Open-source Node.js framework 이며, 간단한 코딩만으로 동적으로 end-to-end REST API를 생성해주는 기능을 제공합니다.)`composer-rest-server`를 설치하려면 다음을 실행합니다:
 ```
-npm install -g composer-rest-server@0.16.0
+npm install -g composer-rest-server@0.19.1
 ```
 
 * `Yeoman`을  `generator-hyperledger-composer` 구성 요소와 결합하게 되면, 비즈니스 네트워크를 해석하고 이를 기반으로 애플리케이션을 쉽게 생성할 수 있습니다. `Yeoman`을 설치하려면 다음을 실행합니다:
@@ -65,6 +68,13 @@ npm install -g yo@2.0.0
 ## 2. 하이퍼레저 패브릭 시작하기
 
 먼저 컴포저 프로파일을 작성하기 위해 하이퍼레저 패브릭 관련 도커 파일을 다운로드합니다. 하이퍼레저 컴포저는 연결 프로파일(Connection Profiles)을 사용하여 런타임에 연결합니다. 연결 프로파일은 사용자의 홈 디렉토리에 있는 JSON 문서 형태이며(또는 환경 변수에서 올 수 있는) Composer API 또는 CLI(Command Line Interface)를 사용할 때 참조됩니다. 연결 프로파일을 사용하면 코드와 스크립트를 하나의 런타임 인스턴스에서 다른 런타임 인스턴스로 쉽게 이동할 수 있습니다.
+
+PeerAdmin ID 카드는 로컬 하이퍼레저 패브릭을 관리하는데 사용되는 특수 ID입니다. 이 PeerAdmin ID 카드는 로컬 하이퍼레저 패브릭을 설치할 때 생성됩니다. 
+
+하이퍼레저 패브릭 v1.0 네트워크의 PeerAdmin 카드 양식은 PeerAdmin@hlfv1 입니다. 대개 PeerAdmin은 아래와 같은 기능을 배치하기 위한 특별한 역할을 수행합니다: 
+
+* 비즈니스 네트워크 배포하기
+* 비즈니스 네트워크 관리자용 ID카드의 생성, 발급 및 해지하기 
 
 패브릭을 시작하고 다음 명령을 사용하여 컴포저 프로파일을 만듭니다:
 ```bash
@@ -145,10 +155,7 @@ Commodity Trading
 
 [컴포저 플레이그라운드](http://composer-playground.mybluemix.net/)를 열면,자동으로 기본 샘플 네트워크를 가져옵니다. 이전에 플레이그라운드를 사용한 적이 있는 경우, 브라우저 콘솔에서 `localStorage.clear()`를 실행하여 브라우저 로컬 저장소를 지우십시오.
 
-이제 배포 버튼을 클릭하여 `my-network.bna`파일을 가져오가 합니다.
-<p align="center">
-  <img width="100" height="50" src="images/importbtn.png">
-</p>
+이제 배포 버튼을 클릭하여 `my-network.bna`파일을 가져오기 합니다. 만약 어떻게 가져오는지를 모르신다면, [컴포저 플레이그라운드 둘러보기](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)를 한 번 보십시오. 
 
 >[컴포저 플레이그라운드를 로컬에서](https://hyperledger.github.io/composer/installing/using-playground-locally.html) 설정할 수도 있습니다.
 
@@ -219,15 +226,15 @@ Commodity Trading
 
 디렉토리를 `my-network.bna` 파일이 들어있는 `dist` 폴더로 변경합니다.
 
-`composer runtime install` 명령을 사용하려면 PeerAdmin 비즈니스 네트워크 카드 (이 경우 하나는 미리 만들어져 가져오기 되었습니다)와 비즈니스 네트워크의 이름이 필요합니다. 컴포저 런타임을 설치하려면 다음 명령을 실행하십시오:
+`composer network install` 명령을 사용하려면 PeerAdmin 비즈니스 네트워크 카드 (이 경우 하나는 미리 만들어져 가져오기 되었습니다)와 비즈니스 네트워크의 이름이 필요합니다. 컴포저 네트워크를 설치하려면 다음 명령을 실행하십시오:
 ```
 cd dist
-composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
+composer network install --card PeerAdmin@hlfv1 --archiveFile my-network.bna
 ```
 
 `composer network start` 명령에는 비즈니스 네트워크 카드, 비즈니스 네트워크의 관리자 ID 이름, `.bna` 파일 경로 및 비즈니스 네트워크 카드로 가져올 파일명이 필요합니다. 비즈니스 네트워크를 배포하려면 다음 명령을 실행하십시오:
 ```
-composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
+composer network start --networkName my-network --networkVersion 0.0.1 --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 ```
 
 `composer card import` 명령을 사용하려면 `composer network start`에 지정된 파일 이름이 있어야 카드를 만들 수 있습니다. 사용 가능한 비즈니스 네트워크 카드로 네트워크 관리자 ID를 가져 오려면 다음을 실행합니다:
@@ -243,8 +250,8 @@ composer network ping --card admin@my-network
 아래와 같은 결과가 나타납니다:
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.16.0
-	participant: org.hyperledger.composer.system.NetworkAdmin#admin
+	version: 0.19.1
+	participant: org.hyperledger.composer.system.Identity#82c679fbcb1541eafeff1bc71edad4f2c980a0e17a5333a6a611124c2addf4ba
 
 Command succeeded
 ```
@@ -265,6 +272,12 @@ composer-rest-server
 
 만약 composer-rest-server 가 성공적으로 시작되었다면 다음의 두 줄을 확인할 수 있습니다:
 ```
+Discovering types from business network definition ...
+Discovered types from business network definition
+Generating schemas for all types in business network definition ...
+Generated schemas for all types in business network definition
+Adding schemas for all types to Loopback ...
+Added schemas for all types to Loopback
 Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
