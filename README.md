@@ -26,7 +26,7 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
-* [Node.js & npm](https://nodejs.org/en/download/) - node v6.2.0 - v6.10.0 (v7+ not supported); npm comes with your node installation.
+* [Node.js & npm](https://nodejs.org/en/download/) - node v8.11.2
 * [Git client](https://git-scm.com/downloads) - needed for clone commands
 *  git - 2.9.x
 *  Python - 2.7.x
@@ -40,7 +40,7 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 
 ## 1. Installing Hyperledger Composer Development Tools
 
-**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.1).  If you have an older version installed, go ahead and remove it by using the command:
+**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.5).  If you have an older version installed, go ahead and remove it by using the command:
 
 ```
 npm uninstall -g composer-cli
@@ -48,17 +48,17 @@ npm uninstall -g composer-cli
 
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
 ```
-npm install -g composer-cli@0.19.1
+npm install -g composer-cli@0.19.5
 ```
 
 * The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
-npm install -g generator-hyperledger-composer@0.19.1
+npm install -g generator-hyperledger-composer@0.19.5
 ```
 
 * The `composer-rest-server` uses the Hyperledger Composer LoopBack Connector to connect to a business network, extract the models and then present a page containing the REST APIs that have been generated for the model. To install `composer-rest-server` run the following command:
 ```
-npm install -g composer-rest-server@0.19.1
+npm install -g composer-rest-server@0.19.5
 ```
 
 * When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
@@ -77,7 +77,15 @@ The form for a PeerAdmin card for a Hyperledger Fabric v1.0 network is PeerAdmin
 * Deploying business networks
 * Creating, issuing, and revoking ID cards for business network admins*
 
-Start the Fabric and create a Composer profile using the following commands:
+First, clone the contents of this repo locally and cd into the project folder by running these commands:
+
+```bash
+git clone https://github.com/IBM/BlockchainNetwork-CompositeJourney.git
+
+cd BlockchainNetwork-CompositeJourney
+```
+
+Then, start the Fabric and create a Composer profile using the following commands:
 ```bash
 ./downloadFabric.sh
 ./startFabric.sh
@@ -159,7 +167,7 @@ If you have previously used Playground, be sure to clear your browser local stor
 Now import the `my-network.bna` file and click on deploy button.  If you don't know how to import, take a [tour of Composer Playground](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)
 
 
->You can also setup [Composer Playground locally](https://hyperledger.github.io/composer/installing/using-playground-locally.html).
+>You can also setup [Composer Playground locally](https://hyperledger.github.io/composer/latest/installing/development-tools.html).
 
 You will see the following:
 <p align="center">
@@ -268,6 +276,7 @@ Answer the questions posed at startup. These allow the composer-rest-server to c
 * Enter `admin@my-network` as the card name.
 * Select `never use namespaces` when asked whether to use namespaces in the generated API.
 * Select `No` when asked whether to secure the generated API.
+* Select `No` when asked whether to enable authentication with Passport.
 * Select `Yes` when asked whether to enable event publication.
 * Select `No` when asked whether to enable TLS security.
 
