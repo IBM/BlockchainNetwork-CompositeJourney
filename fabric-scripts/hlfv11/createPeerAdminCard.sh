@@ -98,7 +98,7 @@ composer card create -p /tmp/.connection.json -u PeerAdmin -c "${CERT}" -k "${PR
 
 if [ "${NOIMPORT}" != "true" ]; then
     if composer card list -c PeerAdmin@hlfv1 > /dev/null; then
-        composer card delete -n PeerAdmin@hlfv1
+        composer card delete --card PeerAdmin@hlfv1
     fi
 
     composer card import --file /tmp/PeerAdmin@hlfv1.card 
