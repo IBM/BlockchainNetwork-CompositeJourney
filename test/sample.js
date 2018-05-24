@@ -14,6 +14,9 @@
 
 'use strict';
 
+// Test program to test the business network against the embedded runtime that stores the state of the blockchain in-memory.  It allows one to ocus on testing
+// the business logic rather than configuring an entire Fabric.
+
 const AdminConnection = require('composer-admin').AdminConnection;
 const BrowserFS = require('browserfs/dist/node/index');
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;

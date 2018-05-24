@@ -3,7 +3,7 @@
 
 ## 构建您的第一个网络 (BYFN)
 
-欢迎来到构建区块链应用程序系列的第一部分。**第 1 部分**将介绍如何创建一个用于商品贸易的 Hyperledger Composer Business Network Archive (BNA) 文件，并将它部署在 Hyperledger Fabric 上。这是 Hyperledger Composer 样本中的最基础样本。
+欢迎来到构建区块链应用程序系列的第一部分。**第 1 部分**将介绍如何创建一个用于商品贸易的 Hyperledger Composer Business Network Archive (BNA) 文件，并将它部署在 Hyperledger Fabric 上。这是 Hyperledger Composer 样本中的最基础样本，所以初级开发人员就能管理他。这个 Code Pattern 已经更新，可以支持  Hyperledger Composer V0.19.0, Hyperledger Fabric V1.1。
 
 Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 主办的一个 Hyperledger 项目。Hyperledger Fabric 旨在作为开发具有模块化架构的应用程序或解决方案的基础，它允许即插即用地使用共识服务和成员服务等组件。
 
@@ -17,7 +17,7 @@ Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 
 * Docker
 
 ## 应用程序工作流图
-![应用程序工作流](images/GettingStartedWComposer-arch-diagram.png)
+![Application Workflow](images/arch-blockchain-network1.png)
 
 1.安装网络依赖项 a) cryptogen b) configtxgen c) configtxlator d) peer
 
@@ -45,31 +45,42 @@ Hyperledger Fabric 是一种区块链架构实现，也是 The Linux Foundation 
 
 ## 1.安装 Hyperledger Composer 开发工具
 
-**备注：**您可能需要在超级用户 `sudo` 模式下运行这些命令。根据安全策略的规定，`sudo` 允许授权用户以超级用户或另一个用户的身份执行命令。
+**备注：**您可能需要在超级用户 `sudo` 模式下运行这些命令。根据安全策略的规定，`sudo` 允许授权用户以超级用户或另一个用户的身份执行命令。另外，你需要安装最新的 composer-cli (0.19.1)。如果你已经安装了就版本，请先使用以下命令删除它：
+
+```
+npm uninstall -g composer-cli
+```
 
 * `composer-cli` 包含用于开发业务网络的所有命令行操作。要安装 `composer-cli`，请运行以下命令：
 ```
-npm install -g composer-cli
+npm install -g composer-cli@0.19.1
 ```
 
 * `generator-hyperledger-composer` 是一个 Yeoman 插件，用于为您的业务网络创建定制的（也就是自定义的）应用程序。Yeoman 是一个开源客户端开发堆栈，包含帮助开发人员构建 Web 应用程序的工具和框架。要安装 `generator-hyperledger-composer`，请运行以下命令：
 ```
-npm install -g generator-hyperledger-composer
+npm install -g generator-hyperledger-composer@0.19.1
 ```
 
 * `composer-rest-server` 使用 Hyperledger Composer LoopBack Connector 连接到业务网络，提取模型，然后呈现一个页面，其中包含已经为该模型生成的 REST API。要安装 `composer-rest-server`，请运行以下命令：
 ```
-npm install -g composer-rest-server
+npm install -g composer-rest-server@0.19.1
 ```
 
 * 将 `Yeoman` 与 `generator-hyperledger-composer` 组件结合使用时，它可以解释业务网络并基于这些网络生成应用程序。要安装 `Yeoman`，请运行以下命令：
 ```
-npm install -g yo
+npm install -g yo@2.0.0
 ```
 
 ## 2.启动 Hyperledger Fabric
 
 首先下载 Fabric 的 Docker 文件，为创建 Composer 配置文件做好准备。Hyperledger Composer 使用连接配置文件连接到运行时。连接配置文件是一个 JSON 文档，位于用户的主目录中（或者可能来自一个环境变量），在使用 Composer API 或命令行工具时，可以按名称引用它。使用连接配置文件确保代码和脚本能在运行时实例之间轻松移植。
+
+PeerAdmin 卡片是一个用于识别本地 Hyperledger Fabric 管理人员。在安装开发过程中（例如在你的计算机上），当你创建本地 Hyperledger Fabric 时会同时创建 PeerAdmin ID 卡。
+
+Hyperledger Fabric v1.0 网络的 PeerAdmin 卡的形式是 PeerAdmin@hlfv1，一般来说，PeerAdmin 一般是一个特殊角色，可以用于以下功能：
+
+* 开发业务网络
+* 为业务网络 admins* 创建、分配、撤销 ID 卡。
 
 使用以下命令启动 Fabric 并创建一个 Composer 配置文件：
 ```bash
@@ -150,10 +161,7 @@ Commodity Trading
 打开 [Composer Playground](http://composer-playground.mybluemix.net/)，其中已在默认情况下导入基本样本网络。
 如果以前使用过 Playground，一定要在浏览器控制台中运行 `localStorage.clear()` 来清除浏览器本地存储。
 
-现在导入 `my-network.bna` 文件并单击 deploy 按钮。
-<p align="center">
-  <img width="100" height="50" src="images/importbtn.png">
-</p>
+现在导入 `my-network.bna` 文件并单击 deploy 按钮。如果你不知道如何导入，查看一下 [tour of Composer Playground](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)
 
 >也可以[在本地设置 Composer Playground](https://hyperledger.github.io/composer/installing/using-playground-locally.html)。
 
@@ -217,67 +225,63 @@ Commodity Trading
   <img width="400" height="200" src="images/transactionsview.png">
 </p>
 
-## 5.将 Business Network Archive 部署到在本地运行的 Hyperledger Composer 上（可选部署方法）
+## 5. 将 Business Network Archive 部署到在本地运行的 Hyperledger Composer 上（可选部署方法）
 
-要将目录更改为包含 `my-network.bna` 文件的 `dist` 文件夹，请键入：
+将业务网络部署到 Hyperledger Fabric 需要将 Hyperledger Composer 链代码安装在对等节点上，然后必须将业务网络归档文件 (.bna) 发送给该对等节点，而且必须创建一个新参与者、身份和关联卡作为网络管理员。最后，必须导入网络管理员业务网络卡供使用，然后对该网络执行 ping 操作来检查它是否会响应。
+
+将目录更改到包含 `my-network.bna` 文件的 `dist` 文件夹。
+
+`composer runtime install` 命令需要一个 PeerAdmin 业务网络卡（在这里已提前创建并导入了一个卡），以及业务网络的名称。要安装 Composer 运行时，请运行以下命令：
 ```
 cd dist
-composer network deploy -a my-network.bna -p hlfv1 -i PeerAdmin -s <randomString>
+composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName my-network
 ```
 
-一段时间后，业务网络应该就会部署到本地 Hyperledger Fabric。您会看到以下输出：
+`composer network start` 命令需要一个业务网络卡，以及业务网络的管理员身份的名称、`.bna` 的文件路径和要创建的适合导入作为业务网络卡的文件名称。要部署业务网络，请运行以下命令：
 ```
-Deploying business network from archive: my-network.bna
-Business network definition:
-	Identifier: my-network@0.0.1
-	Description: Sample Trade Network
+composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile my-network.bna --file networkadmin.card
+```
 
-✔ Deploying business network definition.This may take a minute...
-
-
-Command succeeded
+`composer card import` 命令需要使用 `composer network start` 中指定的文件名来创建一个卡。要导入网络管理员身份作为适用的业务网络卡，请运行以下命令：
+```
+composer card import --file networkadmin.card
 ```
 
 可以键入以下命令来验证网络已部署：
 ```
-composer network ping -n my-network -p hlfv1 -i admin -s adminpw
+composer network ping --card admin@my-network
 ```
 
 您会看到以下输出：
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.10.0
-	participant: <no participant found>
+	version: 0.16.0
+	participant: org.hyperledger.composer.system.NetworkAdmin#admin
 
-Command succeeded  
+Command succeeded
 ```
 
-要与已部署的业务网络集成（创建资产/参与者并提交交易），可以使用 Composer Node SDK 或生成一个 REST API。
-要创建 REST API，需要启动 `composer-rest-server`，告诉它如何连接到我们已部署的业务网络。
-现在启动该服务器，方法是将目录更改到项目工作目录，并键入以下内容：
+要与已部署的业务网络集成（创建资产/参与者并提交交易），可以使用 Composer Node SDK 或生成一个 REST API。要创建 REST API，需要启动 `composer-rest-server`，告诉它如何连接到我们已部署的业务网络。现在启动该服务器，方法是将目录更改到项目工作目录，并键入以下内容：
 ```bash
 cd ..
 composer-rest-server
 ```
 
-回答启动时提出的问题。这些信息使 composer-rest-server 能连接到 Hyperledger Fabric，并配置如何生成 REST API。
-```
-_   _                                 _              _                                  ____                                                         
-| | | |  _   _   _ __     ___   _ __  | |   ___    __| |   __ _    ___   _ __           / ___|   ___    _ __ ___    _ __     ___    ___    ___   _ __
-| |_| | | | | | | '_ \   / _ \ | '__| | |  / _ \  / _` |  / _` |  / _ \ | '__|  _____  | |      / _ \  | '_ ` _ \  | '_ \   / _ \  / __|  / _ \ | '__|
-|  _  | | |_| | | |_) | |  __/ | |    | | |  __/ | (_| | | (_| | |  __/ | |    |_____| | |___  | (_) | | | | | | | | |_) | | (_) | \__ \ |  __/ | |   
-|_| |_|  \__, | | .__/   \___| |_|    |_|  \___|  \__,_|  \__, |  \___| |_|             \____|  \___/  |_| |_| |_| | .__/   \___/  |___/  \___| |_|   
-         |___/  |_|                                       |___/                                                    |_|                                
-? Enter your Fabric Connection Profile Name: hlfv1
-? Enter your Business Network Identifier : my-network
-? Enter your Fabric username : admin
-? Enter your secret: adminpw
-? Specify if you want namespaces in the generated REST API: never use namespaces
-? Specify if you want the generated REST API to be secured: No
-```
+回答启动时提出的问题。这些信息使得 composer-rest-server 能连接到 Hyperledger Fabric，并配置如何生成 REST API。
+* 输入 `admin@my-network` 作为卡名称。
+* 在询问是否在生成的 API 中使用名称空间时，选择 `never use namespaces`。
+* 在询问是否保护生成的 API 时，选择 `No`。
+* 在询问是否启用事件发布时，选择 `Yes`。
+* 在询问是否启用 TLS 安全性时，选择 `No`。
 
 如果 composer-rest-server 成功启动，您会看到以下两行输出：
 ```
+Discovering types from business network definition ...
+Discovered types from business network definition
+Generating schemas for all types in business network definition ...
+Generated schemas for all types in business network definition
+Adding schemas for all types to Loopback ...
+Added schemas for all types to Loopback
 Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
@@ -287,7 +291,7 @@ Browse your REST API at http://localhost:3000/explorer
 您会看到 LoopBack API Explorer，可以检查和测试已生成的 REST API。按照上面的 Composer 部分给出的说明来测试业务网络定义。
 
 ## 准备执行第 2 步！
-恭喜您 - 您已经完成这个系列学习之旅的第 1 步 - 请继续执行 [第 2 步](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney).
+恭喜您 - 您已经完成这个系列学习之旅的第 1 步 - 请继续执行[第 2 步](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney).
 
 ## 其他资源
 * [Hyperledger Fabric 文档](http://hyperledger-fabric.readthedocs.io/en/latest/)
@@ -295,3 +299,4 @@ Browse your REST API at http://localhost:3000/explorer
 
 ## 许可
 [Apache 2.0](LICENSE)
+

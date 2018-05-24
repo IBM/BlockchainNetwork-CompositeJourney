@@ -12,12 +12,13 @@
 [하이퍼레저 컴포저](https://github.com/hyperledger/composer)를 사용하여 기존 자산과 이에 관련된 거래를 포함하는 현재의 비즈니스 네트워크를 신속하게 모델링할 수 있습니다. 여기서 자산(Asset)은 유형 또는 무형의 재화, 서비스 또는 소유물입니다. 비즈니스 네트워크 모델의 한 부분인, 자산을 기반으로 서비스 기능별로 트랜젝션(Transaction)을 정의합니다. 비즈니스 네트워크에 참여중인 참가자는 고유한 ID를 통해 하나의 비즈니스 네트워크나 여러 다른 비즈니스 네트워크에 참여할 수 있는 권한을 갖게 됩니다. 비즈니스 네트워크 정의하는 구성요소는 모델(.cto), 스크립트(.js) 및 ACL(.acl) 파일로 구성되어 아카이브(.bna 파일) 형태로 패키지화 되어 생성되게 됩니다. 그런 다음 아카이브 파일(BNA)을 하이퍼레저 패브릭 네트워크에 배포됩니다.
 
 ## 구성 요소
+
 * 하이퍼레저 패브릭 (Hyperledger Fabric)
 * 하이퍼레저 컴포저 (Hyperledger Composer)
 * 도커 (Docker)
 
-## 애플리케이션 워크플로우 도표
-![Application Workflow](images/arch-network1.pn잭)
+## 애플리케이션 워크플로우 다이아그램
+![Application Workflow](images/GettingStartedWComposer-arch-diagram.png)
 
 1. 네트워크 구성파일 설치하기 a) cryptogen b) configtxgen c) configtxlator d) peer
 2. 네트워크 설정하기 a) 네트워크 아티팩트 생성하기 b) 네트워크 시작하기
@@ -139,7 +140,6 @@ npm test
 
 다음 결과를 확인할 수 있습니다:
 ```bash
-
 > my-network@0.0.1 test /Users/laurabennett/2017-NewRole/Code/BlockchainNetwork-CompositeJourney
 > mocha --recursive
 
@@ -154,6 +154,7 @@ Commodity Trading
 ## 4. 컴포저 플레이그라운드를 사용하여 Business Network Archive 배포하기
 
 [컴포저 플레이그라운드](http://composer-playground.mybluemix.net/)를 열면,자동으로 기본 샘플 네트워크를 가져옵니다. 이전에 플레이그라운드를 사용한 적이 있는 경우, 브라우저 콘솔에서 `localStorage.clear()`를 실행하여 브라우저 로컬 저장소를 지우십시오.
+
 
 이제 배포 버튼을 클릭하여 `my-network.bna`파일을 가져오기 합니다. 만약 어떻게 가져오는지를 모르신다면, [컴포저 플레이그라운드 둘러보기](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)를 한 번 보십시오. 
 
@@ -204,7 +205,8 @@ Commodity Trading
 }
 ```
 
-왼쪽 하단에 있는 `Submit Transaction` 버튼을 클릭하고 `Trade` 트랜션을 제출하여 Commodity의 소유주를 `commodityA`로 변경합니다:
+왼쪽 하단에 있는 `Submit Transaction` 버튼을 클릭하고 `Trade` 트랜잭션을 제출하여 Commodity의 소유주를 `commodityA`로 변경합니다:
+
 ```
 {
   "$class": "org.acme.mynetwork.Trade",
@@ -216,6 +218,7 @@ Commodity Trading
 `Commodity` 레지스트리를 클릭하여 새 소유주를 확인할 수 있습니다. 또한 `All Transactions` 레지스트리를 선택하여 모든 트랜잭션을 볼 수 있습니다.
 
 트랜잭션 뷰의 예:
+
 <p align="center">
   <img width="400" height="200" src="images/transactionsview.png">
 </p>
@@ -253,6 +256,7 @@ The connection to the network was successfully tested: my-network
 	version: 0.19.1
 	participant: org.hyperledger.composer.system.Identity#82c679fbcb1541eafeff1bc71edad4f2c980a0e17a5333a6a611124c2addf4ba
 
+
 Command succeeded
 ```
 
@@ -270,7 +274,7 @@ composer-rest-server
 * 이벤트 게시를 활성화할지 묻는다면 `Yes`를 선택합니다.
 * TLS 보안의 사용 여부를 뭍는다면 `No`를 선택합니다.
 
-만약 composer-rest-server 가 성공적으로 시작되었다면 다음의 두 줄을 확인할 수 있습니다:
+만약 composer-rest-server 가 성공적으로 시작되었다면 다음을 확인할 수 있습니다:
 ```
 Discovering types from business network definition ...
 Discovered types from business network definition
@@ -287,7 +291,9 @@ Browse your REST API at http://localhost:3000/explorer
 생성된 REST API를 검사하고 테스트할 수 있도록 LoopBack API Explorer가 웹브라우저에서 표시되어야 합니다. 위의 컴포저 섹션에서 나와있는대로 설명을 따라 비즈니스 네트워크 정의를 테스트하십시오.
 
 ## 2 단계를 진행하실 준비가 되었습니다! 
+
 축하합니다! 이 시리즈의 1 단계를 완료하셨습니다 - 이제 [2 단계](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney)로 이동합니다.
+
 
 ## 추가 리소스
 * [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
