@@ -23,13 +23,15 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 2. Configure the network a) generating the network artifacts b) Starting up the network
 
 ## Prerequisites
+We find that Blockchain can be finicky when it comes to installing Node. We want to share this [StackOverflow response](https://stackoverflow.com/questions/49744276/error-cannot-find-module-api-hyperledger-composer) - because many times the errors you see with Composer are derived in having installed either the wrong Node version or took an approach that is not supported by Composer: 
 
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
-* [Node.js & npm](https://nodejs.org/en/download/) - node v8.11.2
-* [Git client](https://git-scm.com/downloads) - needed for clone commands
-*  git - 2.9.x
-*  Python - 2.7.x
+* [NPM](https://www.npmjs.com/get-npm) - v5.6.0 or higher
+* [nvm]() - v8.11.3 (use to download and set what node version you are using)
+* [Node.js](https://nodejs.org/en/download/) - node v8.11.3 ** don't install in SUDO mode
+* [Git client](https://git-scm.com/downloads) - v 2.9.x or higher
+* [Python](https://www.python.org/downloads/) - 2.7.x
 
 ## Steps
 1. [Installing Hyperledger Composer Development Tools](#1-installing-hyperledger-composer-development-tools)
