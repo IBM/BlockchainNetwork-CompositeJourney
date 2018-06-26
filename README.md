@@ -19,7 +19,7 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 ## Application Workflow Diagram
 ![Application Workflow](images/arch-blockchain-network1.png)
 
-1. Install the Network Dependicies a) cryptogen b) configtxgen c) configtxlator d) peer
+1. Install the Network Dependencies a) cryptogen b) configtxgen c) configtxlator d) peer
 2. Configure the network a) generating the network artifacts b) Starting up the network
 
 ## Prerequisites
@@ -142,7 +142,7 @@ Command succeeded
 The `composer archive create` command has created a file called `my-network.bna` in the `dist` folder.
 
 You can test the business network definition against the embedded runtime that stores the state of 'the blockchain' in-memory in a Node.js process. This embedded runtime is very useful for unit testing, as it allows you to focus on testing the business logic rather than configuring an entire Fabric.
-From your project working directory(`BlockchainNetwork-CompositeJourney`), run the command:
+From your project working directory (`BlockchainNetwork-CompositeJourney`), run the command:
 ```
 npm test
 ```
@@ -203,7 +203,7 @@ Create `Trader` participants:
 }
 ```
 
-Highlight the Commodity tab on the far left hand side and
+Highlight the `Commodity` tab on the far left hand side and
 create a `Commodity` asset with owner as `traderA`:
 ```
 {
@@ -234,7 +234,7 @@ Example of transaction view:
 
 ## 5. Deploy the Business Network Archive on Hyperledger Composer running locally (alternative deployment approach)
 
-Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.
+Deploying a business network to the Hyperledger Fabric requires the Hyperledger Composer chaincode to be installed on the peer, then the business network archive (`.bna`) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.
 
 Change directory to the `dist` folder containing `my-network.bna` file.
 
