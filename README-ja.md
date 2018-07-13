@@ -1,4 +1,4 @@
-*Read this in other languages: [English](README-ko.md), [한국어](README-ko.md), [中国](README-cn.md).*
+*Read this in other languages: [English](README.md), [한국어](README-ko.md), [中国](README-cn.md).*
 # BlockchainNetwork-CompositeJourney
 
 ## 初めてのネットワークを作成する (BYFN)
@@ -50,7 +50,7 @@ Blockchain 用に Node をインストールする際には注意してくださ
 * [Docker](https://www.docker.com/products/overview) - v1.13 以上
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 以上
 * [NPM](https://www.npmjs.com/get-npm) - v5.6.0 以上
-* [nvm]() - v8.11.3
+* [nvm](https://github.com/creationix/nvm) - v8.11.3
 	* Node Version Manager
 	* 使用するバージョンの Node をダウンロードおよび設定する
 * [Node.js](https://nodejs.org/en/download/) - node v8.11.3
@@ -327,7 +327,7 @@ Command succeeded
 
 デプロイされたビジネスネットワーク (アセット/参加者の作成とトランザクションの送信) と統合するには、Composer Node SDK を使用するか、REST API を生成できます。
 REST APIを作成するには、`composer-rest-server` を起動し、デプロイされたビジネスネットワークに接続する方法を指定してください。
-次に、ディレクトリをプロジェクト作業ディレクトリに変更し、サーバを起動します:
+ディレクトリをプロジェクト作業ディレクトリに変更し、サーバを起動します:
 ```bash
 cd ..
 composer-rest-server
