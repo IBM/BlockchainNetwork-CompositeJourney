@@ -42,6 +42,8 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 
 ## 1. Installing Hyperledger Composer Development Tools
 
+**Note:** Check your node version ```nvm -v ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
+
 **Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.5).  If you have an older version installed, go ahead and remove it by using the command:
 
 ```
