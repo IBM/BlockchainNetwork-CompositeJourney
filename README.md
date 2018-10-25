@@ -28,7 +28,7 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
 * [NPM](https://www.npmjs.com/get-npm) - v5.6.0 or higher
-* [nvm]() - v8.11.3 (use to download and set what node version you are using)
+* [nvm](https://github.com/creationix/nvm/blob/master/README.md) - v8.11.3 (use to download and set what node version you are using)
 * [Node.js](https://nodejs.org/en/download/) - node v8.11.3 ** don't install in SUDO mode
 * [Git client](https://git-scm.com/downloads) - v 2.9.x or higher
 * [Python](https://www.python.org/downloads/) - 2.7.x
