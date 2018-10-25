@@ -1,4 +1,4 @@
-*Read this in other languages: [한국어](README-ko.md), [中国](README-cn.md).*
+*Read this in other languages: [한국어](README-ko.md), [中国](README-cn.md), [日本](README-ja.md).*
 # BlockchainNetwork-CompositeJourney
 
 ## Build Your First Network (BYFN)
@@ -28,7 +28,7 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 * [Docker](https://www.docker.com/products/overview) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
 * [NPM](https://www.npmjs.com/get-npm) - v5.6.0 or higher
-* [nvm](https://github.com/creationix/nvm) - use to download and set what node version you are using
+* [nvm](https://github.com/creationix/nvm/blob/master/README.md) - v8.11.3 (use to download and set what node version you are using)
 * [Node.js](https://nodejs.org/en/download/) - node v8.11.3 ** don't install in SUDO mode
 * [Git client](https://git-scm.com/downloads) - v 2.9.x or higher
 * [Python](https://www.python.org/downloads/) - 2.7.x
@@ -41,6 +41,8 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 5. [Deploy the Business Network Archive on Hyperledger Composer running locally](#5-deploy-the-business-network-archive-on-hyperledger-composer-running-locally)
 
 ## 1. Installing Hyperledger Composer Development Tools
+
+**Note:** Check your node version ```nvm -v ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
 
 **Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.5).  If you have an older version installed, go ahead and remove it by using the command:
 
