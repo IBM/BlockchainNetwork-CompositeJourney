@@ -1,3 +1,7 @@
+# DISCLAIMER:
+
+> As of August 2018, IBM will not be contributing new features to Hyperledger Composer and will only be maintaining it through Fabric 1.x releases.  IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production (this includes the CLI, JavaScript APIs, REST server, and Web Playground).
+
 *Read this in other languages: [한국어](README-ko.md), [中国](README-cn.md), [日本](README-ja.md).*
 # BlockchainNetwork-CompositeJourney
 
@@ -42,9 +46,9 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 
 ## 1. Installing Hyperledger Composer Development Tools
 
-**Note:** Check your node version ```nvm -v ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
+**Note:** Check your node version ```nvm --version ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
 
-**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.19.5).  If you have an older version installed, go ahead and remove it by using the command:
+**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.20.5).  If you have an older version installed, go ahead and remove it by using the command:
 
 ```
 npm uninstall -g composer-cli
@@ -52,22 +56,22 @@ npm uninstall -g composer-cli
 
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
 ```
-npm install -g composer-cli@0.19.5
+npm install -g composer-cli@0.20.5
 ```
 
 * The `generator-hyperledger-composer` is a Yeoman plugin that creates bespoke (e.g. customized) applications for your business network. Yeoman is an open source client-side development stack, consisting of tools and frameworks intended to help developers build web applications. To install `generator-hyperledger-composer` run the following command:
 ```
-npm install -g generator-hyperledger-composer@0.19.5
+npm install -g generator-hyperledger-composer@0.20.5
 ```
 
 * The `composer-rest-server` uses the Hyperledger Composer LoopBack Connector to connect to a business network, extract the models and then present a page containing the REST APIs that have been generated for the model. To install `composer-rest-server` run the following command:
 ```
-npm install -g composer-rest-server@0.19.5
+npm install -g composer-rest-server@0.20.5
 ```
 
 * When combining `Yeoman` with the `generator-hyperledger-composer` component, it can interpret business networks and generate applications based on them. To install `Yeoman` run the following command:
 ```
-npm install -g yo@2.0.0
+npm install -g yo@2.0.5
 ```
 
 ## 2. Starting Hyperledger Fabric

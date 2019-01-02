@@ -11,12 +11,13 @@
   "devDependencies": {
     "browserfs": "latest",
     "chai": "latest",
-    "composer-admin": "^0.14.3",
-    "composer-client": "^0.14.3",
-    "composer-connector-embedded": "^0.14.3",
+    "composer-admin": "^0.20.5",
+    "composer-client": "^0.20.5",
+    "composer-connector-embedded": "^0.20.5",
     "eslint": "latest",
     "istanbul": "latest",
     "mkdirp": "latest",
     "mocha": "latest"
-  }
+  },
+  "dependencies": {}
 }
