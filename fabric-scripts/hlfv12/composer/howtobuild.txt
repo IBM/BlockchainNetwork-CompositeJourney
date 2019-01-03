@@ -1,0 +1,17 @@
+Regenerate crypto material if crypto config or structure changes:
+
+- rm -rf crypto-config
+- cryptogen generate --config=./crypto-config.yaml
+ 
+- Update services/ca.org1.example.com/command section of docker-composer.yml and docker-compose-dev.yml to refer to correct ca.keyfile:
+  - basename $(ls -1 crypto-config/peerOrganizations/org1.example.com/ca/*_sk)
+
+- Update PRIVATE_KEY value in ../createPeerAdminCard.sh to refer to correct private key file:
+  - ls -1 crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/*_sk
+
+
+Regenerate genesis block and create channel transaction if configtx.yaml changes:
+
+- export FABRIC_CFG_PATH=$PWD
+- configtxgen -profile ComposerOrdererGenesis -outputBlock ./composer-genesis.block
+- configtxgen -profile ComposerChannel -outputCreateChannelTx ./composer-channel.tx -channelID composerchannel
