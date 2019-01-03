@@ -1,13 +1,15 @@
 # DISCLAIMER:
 
-> As of August 2018, IBM will not be contributing new features to Hyperledger Composer and will only be maintaining it through Fabric 1.x releases.  IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production (this includes the CLI, JavaScript APIs, REST server, and Web Playground).
+> As of August 2018, IBM will not be contributing new features to Hyperledger Composer and will only be maintaining it through Fabric 2.x releases.  IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production (this includes the CLI, JavaScript APIs, REST server, and Web Playground).
+
+> This pattern has been upgraded to Fabric V2.0
 
 *Read this in other languages: [한국어](README-ko.md), [中国](README-cn.md), [日本](README-ja.md).*
 # BlockchainNetwork-CompositeJourney
 
 ## Build Your First Network (BYFN)
 
-Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples so beginner developers should be able to manage this. This pattern has been updated to support Hyperledger Composer V0.19.5, Hyperledger Fabric V1.1.
+Welcome to the first in a series of building a Blockchain application. **Part 1** will show you how to create a Hyperledger Composer Business Network Archive (BNA) file for Commodity trade and deploy it on a Hyperledger Fabric. This will be the "Hello World" of Hyperledger Composer samples so beginner developers should be able to manage this. This pattern has been updated to support Hyperledger Composer V0.20.5, Hyperledger Fabric V1.2.
 
 Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
 
@@ -16,9 +18,9 @@ Hyperledger Fabric is a blockchain framework implementation and one of the Hyper
 You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to quickly model your current business network, containing your existing assets and the transactions related to them. Assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks. A business network definition consists of model(.cto), script(.js) and ACL(.acl) files packaged and exported as an archive(.bna file). The archive file is then deployed to a Hyperledger Fabric network.
 
 ## Included Components
-* Hyperledger Fabric
-* Hyperledger Composer
-* Docker
+* Hyperledger Fabric v1.2
+* Hyperledger Composer for v20.5
+* Docker v1.13
 
 ## Application Workflow Diagram
 ![Application Workflow](images/arch-blockchain-network1.png)
@@ -48,10 +50,13 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 
 **Note:** Check your node version ```nvm --version ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
 
-**Note:** You may need to run these commands in superuser `sudo` mode. `sudo` allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. Additionally, you will be installing the latest version of composer-cli (0.20.5).  If you have an older version installed, go ahead and remove it by using the command:
+**Note:** You will be installing the latest version of composer-cli (0.20.5).  If you have an older versions installed, go ahead and remove it by using the command:
 
 ```
-npm uninstall -g composer-cli
+npm uninstall composer-cli
+npm uninstall generator-hyperledger-composer
+npm uninstall composer-rest-server
+npm uninstall yo
 ```
 
 * The `composer-cli` contains all the command line operations for developing business networks. To install `composer-cli` run the following command:
@@ -75,6 +80,15 @@ npm install -g yo@2.0.5
 ```
 
 ## 2. Starting Hyperledger Fabric
+
+** Note: **
+<p>If you have previously used an older version of <strong>Hyperledger Composer</strong> and are now setting up a new install, you may want to kill and remove all previous Docker containers, which you can do with these commands:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    
+    docker kill $(docker ps -q)
+    docker rm $(docker ps -aq)
+    docker rmi -f $(docker images -q)
+</code></pre></div>
+
 
 First download the docker files for Fabric in preparation for creating a Composer profile.  Hyperledger Composer uses Connection Profiles to connect to a runtime. A Connection Profile is a JSON document that lives in the user's home directory (or may come from an environment variable) and is referenced by name when using the Composer APIs or the Command Line tools. Using connection profiles ensures that code and scripts are easily portable from one runtime instance to another.
 
@@ -268,7 +282,8 @@ composer network ping --card admin@my-network
 You should see the the output as follows:
 ```
 The connection to the network was successfully tested: my-network
-	version: 0.19.0
+	Business network version: 0.0.1
+  version: 0.20.5
 	participant: org.hyperledger.composer.system.Identity#82c679fbcb1541eafeff1bc71edad4f2c980a0e17a5333a6a611124c2addf4ba
 
 Command succeeded
@@ -285,10 +300,12 @@ Answer the questions posed at startup. These allow the composer-rest-server to c
 * Select `never use namespaces` when asked whether to use namespaces in the generated API.
 * Select `No` when asked whether to secure the generated API.
 * Select `No` when asked whether to enable authentication with Passport.
+* Select `No` when asked if you want to enable the explorer test interface.
+* Select `No` when asked if you want to enable dynamic logging.
 * Select `Yes` when asked whether to enable event publication.
 * Select `No` when asked whether to enable TLS security.
 
-If the composer-rest-server started successfully you should see these two lines are output:
+If the composer-rest-server started successfully you should see these output lines:
 ```
 Discovering types from business network definition ...
 Discovered types from business network definition
