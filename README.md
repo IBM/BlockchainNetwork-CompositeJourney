@@ -13,7 +13,7 @@ Welcome to the first in a series of building a Blockchain application. **Part 1*
 
 Hyperledger Fabric is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-playIn
 
-[Part 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney), we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions. In this journey, you will run Hyperledger Fabric locally.
+[Part 2](https://github.com/IBM/BlockchainSmartContractTrading-CompositeJourney), we will explore more about creating a complex network with multiple participants and using Access Control Rules (ACL) to provide them network access permissions. In this journey, you will run Hyperledger Fabric locally.
 
 You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to quickly model your current business network, containing your existing assets and the transactions related to them. Assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks. A business network definition consists of model(.cto), script(.js) and ACL(.acl) files packaged and exported as an archive(.bna file). The archive file is then deployed to a Hyperledger Fabric network.
 
@@ -29,9 +29,9 @@ You can use [Hyperledger Composer](https://github.com/hyperledger/composer) to q
 2. Configure the network a) generating the network artifacts b) Starting up the network
 
 ## Prerequisites
-We find that Blockchain can be finicky when it comes to installing Node. We want to share this [StackOverflow response](https://stackoverflow.com/questions/49744276/error-cannot-find-module-api-hyperledger-composer) - because many times the errors you see with Composer are derived in having installed either the wrong Node version or took an approach that is not supported by Composer: 
+We find that Blockchain can be finicky when it comes to installing Node. We want to share this [StackOverflow response](https://stackoverflow.com/questions/49744276/error-cannot-find-module-api-hyperledger-composer) - because many times the errors you see with Composer are derived in having installed either the wrong Node version or took an approach that is not supported by Composer:
 
-* [Docker](https://www.docker.com/products/overview) - v1.13 or higher
+* [Docker](https://www.docker.com/products) - v1.13 or higher
 * [Docker Compose](https://docs.docker.com/compose/overview/) - v1.8 or higher
 * [NPM](https://www.npmjs.com/get-npm) - v5.6.0 or higher
 * [nvm](https://github.com/creationix/nvm/blob/master/README.md) - v8.11.3 (use to download and set what node version you are using)
@@ -48,7 +48,7 @@ We find that Blockchain can be finicky when it comes to installing Node. We want
 
 ## 1. Installing Hyperledger Composer Development Tools
 
-**Note:** Check your node version ```nvm --version ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```. 
+**Note:** Check your node version ```nvm --version ```. If you are not using node version 8.11 some of the composer commands won't run correctly. Switch node versions using ```nvm use 8```.
 
 **Note:** You will be installing the latest version of composer-cli (0.20.5).  If you have an older versions installed, go ahead and remove it by using the command:
 
@@ -83,7 +83,7 @@ npm install -g yo@2.0.5
 
 ** Note: **
 <p>If you have previously used an older version of <strong>Hyperledger Composer</strong> and are now setting up a new install, you may want to kill and remove all previous Docker containers, which you can do with these commands:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">    
+<div class="highlight"><pre><code class="language-" data-lang="">
     docker kill $(docker ps -q)
     docker rm $(docker ps -aq)
     docker rmi -f $(docker images -q)
@@ -102,7 +102,7 @@ The form for a PeerAdmin card for a Hyperledger Fabric v1.0 network is PeerAdmin
 First, clone the contents of this repo locally and cd into the project folder by running these commands:
 
 ```bash
-git clone https://github.com/IBM/BlockchainNetwork-CompositeJourney.git
+git clone https://github.com/IBM/BlockchainNetwork-CompositeJourney
 
 cd BlockchainNetwork-CompositeJourney
 ```
@@ -112,7 +112,7 @@ Then, start the Fabric and create a Composer profile using the following command
 ./downloadFabric.sh
 ./startFabric.sh
 ./createPeerAdminCard.sh
-```  
+```
 
 No need to do it now; however as an fyi - you can stop and tear down Fabric using:
 ```
@@ -183,7 +183,7 @@ Commodity Trading
 
 ## 4. Deploy the Business Network Archive using Composer Playground
 
-Open [Composer Playground](http://composer-playground.mybluemix.net/), by default the Basic Sample Network is imported.
+Open [Composer Playground](https://composer-playground.mybluemix.net/), by default the Basic Sample Network is imported.
 If you have previously used Playground, be sure to clear your browser local storage by running `localStorage.clear()` in your browser Console.
 
 Now import the `my-network.bna` file and click on deploy button.  If you don't know how to import, take a [tour of Composer Playground](https://www.youtube.com/watch?time_continue=29&v=JQMh_DQ6wXc)
@@ -322,12 +322,12 @@ Open a web browser and navigate to http://localhost:3000/explorer
 You should see the LoopBack API Explorer, allowing you to inspect and test the generated REST API. Follow the instructions to test Business Network Definition as mentioned above in the composer section.
 
 ## Ready to move to Step 2!
-Congratulations - you have completed Step 1 of this Composite Journey - move onto [Step 2](https://github.com/IBM/BlockchainBalanceTransfer-CompositeJourney).
+Congratulations - you have completed Step 1 of this Composite Journey - move onto [Step 2](https://github.com/IBM/BlockchainSmartContractTrading-CompositeJourney).
 
 ## Additional Resources
-* [Hyperledger Fabric Docs](http://hyperledger-fabric.readthedocs.io/en/latest/)
+* [Hyperledger Fabric Docs](https://hyperledger-fabric.readthedocs.io/en/latest/)
 
 ## License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
