@@ -1,4 +1,4 @@
-*Read this in other languages: [English](README.md), [한국어](README-ko.md), [中国](README-cn.md).*
+*Read this in other languages: [English](README.md), [한국어](README-ko.md).*
 # BlockchainNetwork-CompositeJourney
 
 ## 初めてのネットワークを作成する (BYFN)
