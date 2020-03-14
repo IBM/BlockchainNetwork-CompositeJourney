@@ -300,8 +300,8 @@ Answer the questions posed at startup. These allow the composer-rest-server to c
 * Select `never use namespaces` when asked whether to use namespaces in the generated API.
 * Select `No` when asked whether to secure the generated API.
 * Select `No` when asked whether to enable authentication with Passport.
-* Select `No` when asked if you want to enable the explorer test interface.
-* Select `No` when asked if you want to enable dynamic logging.
+* Select `Yes` when asked if you want to enable the explorer test interface.
+* Press `ENTER` when asked for the key to enable dynamic logging.
 * Select `Yes` when asked whether to enable event publication.
 * Select `No` when asked whether to enable TLS security.
 
